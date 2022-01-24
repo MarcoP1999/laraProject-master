@@ -31,8 +31,7 @@ class PublicModel
             ->orderBy('nome_e_codice');
 
         if($filtro['descrizione'] != "") {
-            $prodotti = $prodotti->where('descrizione', '%' . $filtro['descrizione'] . '%');
-
+            $prodotti = $prodotti->where('descrizione', 'LIKE', '%' . $filtro['descrizione'] . '%');
         }
 
 

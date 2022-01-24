@@ -28,7 +28,7 @@
             </div>
         @endif
     @endcan
-		@can('isOrg')
+		@can('isStaff')
 		@if(Route::current()->uri != 'staff')
 	     	<div class="btn_nav">
 			    	<button class="lgn_btn"  type="button" name="button" onclick="window.location='{{route('org_area')}}'">Area Organizzatori</button>

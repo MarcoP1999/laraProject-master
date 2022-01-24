@@ -53,7 +53,19 @@ Route::post('logout', 'Auth\LoginController@logout')
     ->name('logout');
 
 // Rotta per home lv.4
-Route::view('/admin', 'admin.admin') -> name('admin') -> middleware('can:isAdmin');
+/*Route::view('/admin', 'admin.admin') -> name('admin') -> middleware('can:isAdmin');*/
+Route::get('/admin', 'LV4Controller@showAreaAdmin') -> name('admin')->middleware('can:isAdmin');
+
+// Rotta crea prodotto
+Route::view('/admin/creaprodotto', 'admin.nuovo_prodotto') -> name('nuovoProdotto')->middleware('can:isAdmin');
+Route::post('/admin/creaprodotto', 'LV4Controller@creaProdotto') -> name('creaProdotto')->middleware('can:isAdmin');
+
+//Rotta per cancellare prodotti
+Route::get('/admin/cancellaprodotto/{id}', 'LV4Controller@cancellaProdotto') -> name('cancellaProdotto')->middleware('can:isAdmin');
+
+//Rotte per modifica prodotti
+Route::get('/staff/modificaprodotto/{id_evento}', 'LV4Controller@showFormModificaProdotto') -> name('modificaProdotto')->middleware('can:isAdmin');
+Route::post('/staff/modificaprodotto', 'LV4Controller@modificaProdotto') -> name('modProdotto')->middleware('can:isAdmin');
 
 Route::get('/admin/tecnici', 'LV4Controller@showTecn') -> name('showTecn') -> middleware('can:isAdmin');
 

@@ -32,6 +32,17 @@ class LV4Controller extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function showAreaAdmin()
+    {
+        $_AdminModel=new AdminModel;
+         $prodotti = $this->_AdminModel->getProdotti();
+
+
+        return view('admin.admin')
+            ->with('prodotti', $prodotti);
+
+    }
+
     public function showTecn(){
         $_AdminModel=new AdminModel;
 
@@ -49,11 +60,6 @@ class LV4Controller extends Controller
         return redirect()->route('showTecn');
     }
 
-    public function showFormModificaDati(){
-        $dati_personali = $this->_AdminModel->getPersonalData(Auth::id());
-        return view('admin.form_modifica')
-            ->with('info', $dati_personali[0]);
-    }
 
     public function modificaDati(){
         if($_POST['password'] != $_POST['password_confirm']) return redirect()->back()->with('alert', 'Le password non corrispondono.');

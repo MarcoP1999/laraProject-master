@@ -41,7 +41,7 @@ class OrgModel extends Model
     }
     public function getEventiOrganizzati($id_utente){
         $organame = DB::table('users')
-         ->select('nome_org')
+         ->select('username')
          ->where('id', '=', $id_utente)
          ->get();
        //dd($organame[0]->nome_org);
@@ -49,15 +49,6 @@ class OrgModel extends Model
         ->orderByDesc('event_id')
         ->paginate(4);
     return $eventi;
-    }
-    public function checkOrg($id_evento,$id_utente){
-      $organame = DB::table('users')
-          ->select('nome_org')
-          ->where('id', '=', $id_utente)
-          ->get();
-      $eventi =Eventi::where('event_id', $id_evento)
-          ->get();
-          return $organame[0]->nome_org==$eventi[0]->org_name;
     }
 
     public function cancellaEventoDB($id){

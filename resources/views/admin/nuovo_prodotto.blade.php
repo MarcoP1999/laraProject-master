@@ -3,8 +3,8 @@
 @section('title', 'Nuovo prodotto')
 
 @section('breadcrumb')
-    <li><a href="{{ route('org_area') }}">Area organizzatori</a></li>
-    <li><a href="{{ route('nuovoEvento') }}">Nuovo evento</a></li>
+    <li><a href="{{ route('admin') }}">Area organizzatori</a></li>
+    <li><a href="{{ route('nuovoProdotto') }}">Nuovo prodotto</a></li>
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
         <div>
             <form enctype="multipart/form-data" action="{{route('creaEvento')}}" method="post">
                 @csrf
-                <label for="artista"><h6>Nome Artista</h6></label>
+                <label for="nome_e_codice"><h6>Nome e Codice prodotto</h6></label>
                 <input type="text" id="artista" name="artista" value="{{old('artista')}}" required>
                 @error('artista')
                 <span class="invalid-feedback" role="alert">

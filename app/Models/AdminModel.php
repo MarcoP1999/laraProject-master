@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Models\Resources\Eventi;
+use App\Models\Resources\Prodotti;
 use App\Models\Resources\Utente;
-use App\Models\Resources\Biglietto;
 use App\Models\Resources\FAQ;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +15,12 @@ use PhpParser\Node\Expr\Array_;
 
 class AdminModel extends Model
 {
+    public function getProdotti() {
+        $prodotti = DB::table('products')
+            ->paginate(5);
+        return $prodotti;
+    }
+
     public function getTecn(){
         return Utente::where('livello_utenza', 2) -> orderBy('username') -> paginate(5);
     }

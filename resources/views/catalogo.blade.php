@@ -53,16 +53,6 @@
                         <fieldset>
                             <button class="form_btn" type="submit">Applica</button>
                         </fieldset>
-
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                        <script>
-                            $(function () {
-                                $('#azzera').
-                                    on('click', function() {
-                                        $('input[name="descrizione"]').val('');
-                                })
-                            })
-                        </script>
                     </form>
                 </div>
             </aside>
