@@ -16,35 +16,18 @@ class PublicController extends Controller {
 
     public function showHome() {
 
-        //Nuovi concerti
-        $newer = $this->_PublicModel->getNewer();
-
-        //Concerti richiesti
-        $requested = $this->_PublicModel->getRequested();
-
-        return view('home')
-                        ->with('newer', $newer)
-                        ->with('requested', $requested);
+        return view('home');
 
     }
 
     public function showCatalog() {
 
         // Tutti gli eventi (senza filtro)
-        $eventi = $this->_PublicModel->getEvents();
         $prodotti = $this->_PublicModel->getProducts();
-        $organizzatori = $this->_PublicModel->getOrg();
 
-        $sconti = [];
-        foreach ($eventi as $evento) {
-            array_push($sconti, $this->_PublicModel->checkDiscount($evento->event_id));
-        }
 
         return view('catalogo')
-            ->with('eventi', $eventi)
-            ->with('prodotti', $prodotti)
-            ->with('organizzatori', $organizzatori)
-            ->with('sconti', $sconti);
+            ->with('prodotti', $prodotti);
 
     }
 
@@ -60,46 +43,12 @@ class PublicController extends Controller {
 
         $array = unserialize($filtro);
 
-        $filteredEvents = $this->_PublicModel->getFilteredEvents($array);
-
-        $organizzatori = $this->_PublicModel->getOrg();
-
-        $sconti = [];
-        foreach ($filteredEvents as $evento) {
-            array_push($sconti, $this->_PublicModel->checkDiscount($evento->event_id));
-        }
+        $filteredEvents = $this->_PublicModel->getFilteredProducts($array);
 
         return view('catalogo')
-            ->with('eventi', $filteredEvents)
-            ->with('organizzatori', $organizzatori)
-            ->with('filtri', $array)
-            ->with('sconti', $sconti);
+            ->with('prodotti', $filteredEvents)
+            ->with('filtri', $array);
 
-    }
-
-    public function eventDetails($id_evento) {
-
-        $evento = $this->_PublicModel->getEventDetails($id_evento);
-        if($evento[0]->data < date("Y-m-d")) abort(403, "L'evento si è già svolto");
-        $num = $this->_PublicModel->getPartNum($id_evento);
-
-        if(!is_null(Auth::id())) $partecipo = $this->_PublicModel->checkPart($id_evento, Auth::id());
-        else $partecipo = false;
-
-        $sconti = [];
-        foreach ($evento as $concerto) {
-            array_push($sconti, $this->_PublicModel->checkDiscount($concerto->event_id));
-        }
-
-        $link_mappa = "https://maps.google.com/maps/embed/v1/place?key=AIzaSyCHkDer_PudcPk8ZmJybSzwNXD0Dq-lPCQ&zoom=17&q="
-            .str_replace(" ", "%20", $evento[0]->luogo);
-
-        return view('scheda_evento')
-            ->with('evento', $evento[0])
-            ->with('partecipanti', $num)
-            ->with('partecipo', $partecipo)
-            ->with('sconti', $sconti[0])
-            ->with('link_mappa', $link_mappa);
     }
 
     public function productDetails($id_prodotto) {
@@ -116,15 +65,6 @@ class PublicController extends Controller {
 
         return view('faq')
             ->with('faq', $faq);
-    }
-    public function showProductCatalog() {
-
-        // Tutti i prodotti (senza filtro)
-        $prodotti = $this->_PublicModel->getProducts();
-
-        return view('catalogo')
-            ->with('prodotti', $prodotti);
-
     }
 
     public function __call($method, $parameters)

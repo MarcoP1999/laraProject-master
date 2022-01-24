@@ -16,7 +16,7 @@ use PhpParser\Node\Expr\Array_;
 class AdminModel extends Model
 {
     public function getTecn(){
-        return Utente::where('livello_utenza', 2) -> orderBy('username') -> paginate(6);
+        return Utente::where('livello_utenza', 2) -> orderBy('username') -> paginate(5);
     }
 
     public function deleteTecnDB ($id){
@@ -27,7 +27,7 @@ class AdminModel extends Model
     }
 
     public function getStaff(){
-        return Utente::where('livello_utenza', 3) -> orderBy('username') -> paginate(6);
+        return Utente::where('livello_utenza', 3) -> orderBy('username') -> paginate(5);
     }
 
     public function deleteStaffDB ($id){

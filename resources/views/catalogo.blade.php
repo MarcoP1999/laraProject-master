@@ -47,7 +47,7 @@
                     <form class="" action="{{ route('processForm') }}" method="post">
                         @csrf
                         <fieldset>
-                            <legend>Descrizione dell'evento</legend>
+                            <legend>Descrizione del prodotto</legend>
                             <input @isset($filtri) value="{{ $filtri['descrizione'] }}" @endisset type="text" class="search-input" style="width: 200px" maxlength="50" name="descrizione" placeholder="Descrizione">
                         </fieldset>
                         <fieldset>

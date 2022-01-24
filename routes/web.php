@@ -61,6 +61,7 @@ Route::get('/admin/tecnici/elimina/{id}', 'LV4Controller@deleteTecn') -> name('d
 
 Route::get('/admin/staff', 'LV4Controller@showStaff') -> name('showStaff') -> middleware('can:isAdmin');
 
+Route::get('/admin/tecnici/elimina/{id}', 'LV4Controller@deleteTecn') -> name('deleteTecn') -> middleware('can:isAdmin');
 Route::get('/admin/staff/elimina/{id}', 'LV4Controller@deleteStaff') -> name('deleteStaff') -> middleware('can:isAdmin');
 
 Route::get('/admin/staff/modificatecn/{id}', 'LV4Controller@showFormModifyTecn') -> name('modifyTecn') -> middleware('can:isAdmin');
