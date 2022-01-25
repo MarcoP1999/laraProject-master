@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FilterRequest;
+use App\Http\Requests\NewProductRequest;
 use App\Http\Requests\NewUserRequest;
 use App\Models\PublicModel;
 use App\Models\UserModel;
@@ -41,6 +42,26 @@ class LV4Controller extends Controller
         return view('admin.admin')
             ->with('prodotti', $prodotti);
 
+    }
+    public function creaProdotto(NewProductRequest $request){
+
+        $this->_AdminModel->setNewProductData($request);
+        return redirect()->route('admin');
+    }
+
+    public function cancellaProdotto($id){
+        $this->_AdminModel->cancellaProdottoDB($id);
+        return redirect('/admin');
+    }
+    public function showFormModificaProdotto($id_prodotto){
+        $_PublicModel= new PublicModel;
+        $dati=$_PublicModel->getProductDetails($id_prodotto);
+        return view('admin.modifica_prodotto')
+            ->with('dati', $dati[0]);
+    }
+    public function modificaProdotto(NewProductRequest $request){
+        $this->_AdminModel->setProductData($request);
+        return redirect()->route('admin')->with('alert', 'Modifiche avvenute con successo');
     }
 
     public function showTecn(){

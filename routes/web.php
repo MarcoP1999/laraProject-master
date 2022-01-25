@@ -29,10 +29,6 @@ Route::view('/contatti', 'contatti') -> name('contatti');
 // Rotta area tecnici
 Route::get('/staff', 'LV3Controller@showAreaOrganizzatori') -> name('org_area')->middleware('can:isStaff');
 
-// Rotta crea prodotto
-Route::view('/staff/creaevento', 'staff.nuovo_evento') -> name('nuovoEvento')->middleware('can:isStaff');
-Route::post('/staff/creaevento', 'LV3Controller@creaEvento') -> name('creaEvento')->middleware('can:isStaff');
-
 //Rotta per cancellare prodotti
 Route::get('/staff/cancellaevento/{id}', 'LV3Controller@cancellaEvento') -> name('cancellaEvento')->middleware('can:isStaff');
 
@@ -64,12 +60,12 @@ Route::post('/admin/creaprodotto', 'LV4Controller@creaProdotto') -> name('creaPr
 Route::get('/admin/cancellaprodotto/{id}', 'LV4Controller@cancellaProdotto') -> name('cancellaProdotto')->middleware('can:isAdmin');
 
 //Rotte per modifica prodotti
-Route::get('/staff/modificaprodotto/{id_evento}', 'LV4Controller@showFormModificaProdotto') -> name('modificaProdotto')->middleware('can:isAdmin');
-Route::post('/staff/modificaprodotto', 'LV4Controller@modificaProdotto') -> name('modProdotto')->middleware('can:isAdmin');
+Route::get('/admin/modificaprodotto/{id_evento}', 'LV4Controller@showFormModificaProdotto') -> name('modificaProdotto')->middleware('can:isAdmin');
+Route::post('/admin/modificaprodotto', 'LV4Controller@modificaProdotto') -> name('modProdotto')->middleware('can:isAdmin');
+
+Route::get('/admin/cancellaprodotto/{id}', 'LV4Controller@cancellaProdotto') -> name('cancellaProdotto')->middleware('can:isAdmin');
 
 Route::get('/admin/tecnici', 'LV4Controller@showTecn') -> name('showTecn') -> middleware('can:isAdmin');
-
-Route::get('/admin/tecnici/elimina/{id}', 'LV4Controller@deleteTecn') -> name('deleteTecn') -> middleware('can:isAdmin');
 
 Route::get('/admin/staff', 'LV4Controller@showStaff') -> name('showStaff') -> middleware('can:isAdmin');
 

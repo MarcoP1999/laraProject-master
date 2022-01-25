@@ -21,6 +21,65 @@ class AdminModel extends Model
         return $prodotti;
     }
 
+    public function setNewProductData($request){
+        $product = new Prodotti;
+        $product->fill($request->all());
+        $product->image_catalogo = 'default.png';
+        $imageName = NULL;
+        $product->save();
+
+        if ($request->hasFile('image_catalogo')) {
+            $image = $request->file('image_catalogo');
+            $imageName = $image->getClientOriginalName();
+            $ext = pathinfo($imageName, PATHINFO_EXTENSION);
+            $imageName = $product->product_id;
+            $imageName .= '.'.$ext;
+            $product->image_catalogo = $imageName;
+            $product->save();
+        }
+
+        if (!is_null($imageName)) {
+            $destinationPath = public_path() . '/images/';
+            $image->move($destinationPath, $imageName);
+        }
+    }
+
+    public function cancellaProdottoDB($id){
+        $prodotto = Prodotti::find($id);
+        if($prodotto->image_catalogo != 'default.png' && file_exists(public_path() . '/images/' . $prodotto->image_catalogo))
+            unlink(public_path() . '/images/' . $prodotto->image_catalogo);
+        $prodotto->delete();
+    }
+    public function setProductData($request){
+
+        $prodotto=Prodotti::find($request->get('product_id'));
+        $prodotto->nome_e_codice= $request->get('nome_e_codice');
+        $prodotto->descrizione= $request->get('descrizione');
+        $prodotto->modi_installazione= $request->get('modi_installazione');
+        $prodotto->note_buon_uso= $request->get('note_buon_uso');
+        $prodotto->save();
+
+        $imageName = NULL;
+
+        if ($request->hasFile('image_catalogo')) {
+            $image = $request->file('image_catalogo');
+            $imageName = $image->getClientOriginalName();
+            $ext = pathinfo($imageName, PATHINFO_EXTENSION);
+            $imageName = $prodotto->event_id;
+            $imageName .= '.'.$ext;
+            if($prodotto->image_catalogo != 'default.png' && file_exists(public_path() . '/images/' . $prodotto->image_catalogo) )
+                unlink(public_path() . '/images/' . $prodotto->image_catalogo);
+            $prodotto->image_catalogo = $imageName;
+            $prodotto->save();
+        }
+
+        if (!is_null($imageName)) {
+            $destinationPath = public_path() . '/images/';
+            $image->move($destinationPath, $imageName);
+        };
+    }
+
+
     public function getTecn(){
         return Utente::where('livello_utenza', 2) -> orderBy('username') -> paginate(5);
     }
@@ -109,9 +168,6 @@ class AdminModel extends Model
         $faq->delete();
     }
 
-    public function getPersonalData($id_utente){
-        return Utente::where('id', $id_utente)->get();
-    }
 
 
 }

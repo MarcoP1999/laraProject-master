@@ -18,7 +18,6 @@
                     <h4 style="margin: 10px auto auto 350px;">{{ $prodotti->total() }} PRODOTTI</h4>
                 @endif
                 <ul>
-                    <div style="display: none">{{ $i = 0 }}</div>
                     @foreach($prodotti as $prodotto)
                         <li id="elemento_lista">
                             <div class="riquadro_prodotto">

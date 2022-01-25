@@ -18,9 +18,9 @@
         <div id="contenuto_catalogo">
             <div class="header_org">
                 @if($prodotti->total() != 1)
-                    <h3>Lista eventi ({{$prodotti->total()}} risultati)</h3>
+                    <h3>Lista prodotti ({{$prodotti->total()}} risultati)</h3>
                 @else
-                    <h3>Lista eventi (1 risultato)</h3>
+                    <h3>Lista prodotti (1 risultato)</h3>
                 @endif
                 <div class="bottone_admin">
                     <div class="bottone_prodotto" style="margin-right: 10px">
@@ -29,7 +29,6 @@
                 </div>
             </div>
             <ul>
-                <div style="display: none">{{ $i = 0 }}</div>
                 @foreach($prodotti as $prodotto)
                     <li id="elemento_lista">
                         <div class="riquadro_concerto">
