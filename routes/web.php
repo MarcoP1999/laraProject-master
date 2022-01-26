@@ -17,8 +17,7 @@ Route::get('/', 'PublicController@showHome') -> name('home1');
 // Rotte per il catalogo
 Route::get('/catalogo', 'PublicController@showCatalog') -> name('showCatalog');
 
-Route::post('/catalogo', 'PublicController@processFilterForm') -> name('processForm');
-Route::get('/catalogo/filtro/{filtro}', 'PublicController@showFilteredCatalog');
+Route::get('/catalogo/filtro', 'PublicController@showFilteredCatalog') -> name('showFilteredCatalog');
 
 // Rotta per faq
 Route::get('/faq', 'PublicController@showFAQ') -> name('faq');

@@ -204,28 +204,6 @@ class DatabaseSeeder extends Seeder
                 'surname'=> NULL],
         ]);
 
-        DB::table('events')->insert([
-
-
-            ['event_id'=> '12',
-                'luogo' => 'Ascoli Piceno, Stadio Cino e Lillo Del Duca',
-                'data'=> '2022-06-01',
-                'ora'=>'18:00:00',
-                'regione'=> 'Marche',
-                'image_catalogo'=> '12.jpg',
-                'programma' => 'Ore 17:00 apertura cancelli. Ore 21:00 inizio apertura concerto. Ore 21:30 inizio concerto. Ore 23:00 fine concerto',
-                'indicazioni' => 'In auto, uscita Ascoli Piceno Est dell’Ascoli-Mare, seguire le indicazioni “Stadio”; uscita Ascoli Piceno Ovest (consigliata per la tifoseria ospite), proseguire per Ascoli centro e imboccare la circonvallazione nord. In treno, dalla stazione ferroviaria di Ascoli Piceno è possibile raggiungerlo a piedi vista la vicinanza dell’impianto situato a circa 400 m. In aereo, gli aeroporti più vicini sono l’Aeroporto di Ancona-Falconara e l’Aeroporto di Pescara.',
-                'artista' => 'Nerkias',
-                'biglietti_totali' => 1000,
-                'biglietti_rimasti' => 1000,
-                'costo' => 5.00,
-                'descrizione' => 'I Nerkias tornano live dopo più di un anno per il loro concerto in Ascoli. Compra i tuoi biglietti qui su TicketWorld!',
-                'percentuale_sconto' => 20,
-                'giorni_sconto' => 10],
-
-
-        ]);
-
         DB::table('faq')->insert([
             ['id'=>'1',
                 'domanda'=>'Quali sono i criteri di ricerca dei prodotti trattati?',

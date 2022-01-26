@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PublicModel;
 use Faker\Provider\DateTime;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class PublicController extends Controller {
 
@@ -31,23 +32,14 @@ class PublicController extends Controller {
 
     }
 
-    public function processFilterForm() {
 
-        $array = array_slice($_POST, 1);
-        $filtro = serialize($array);
+    public function showFilteredCatalog(Request $request) {
 
-        return redirect('/catalogo/filtro/'.$filtro);
-    }
-
-    public function showFilteredCatalog($filtro) {
-
-        $array = unserialize($filtro);
-
-        $filteredEvents = $this->_PublicModel->getFilteredProducts($array);
+        $filteredEvents = $this->_PublicModel->getFilteredProducts($request);
 
         return view('catalogo')
             ->with('prodotti', $filteredEvents)
-            ->with('filtri', $array);
+            ->with('filtri', $request['descrizione']);
 
     }
 

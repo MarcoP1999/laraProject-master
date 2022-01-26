@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Resources\Eventi;
-use App\Models\Resources\Prodotti;
+use App\Models\Resources\Prodotto;
 use App\Models\Resources\Utente;
 use App\Models\Resources\FAQ;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +22,7 @@ class AdminModel extends Model
     }
 
     public function setNewProductData($request){
-        $product = new Prodotti;
+        $product = new Prodotto;
         $product->fill($request->all());
         $product->image_catalogo = 'default.png';
         $imageName = NULL;
@@ -45,14 +45,14 @@ class AdminModel extends Model
     }
 
     public function cancellaProdottoDB($id){
-        $prodotto = Prodotti::find($id);
+        $prodotto = Prodotto::find($id);
         if($prodotto->image_catalogo != 'default.png' && file_exists(public_path() . '/images/' . $prodotto->image_catalogo))
             unlink(public_path() . '/images/' . $prodotto->image_catalogo);
         $prodotto->delete();
     }
     public function setProductData($request){
 
-        $prodotto=Prodotti::find($request->get('product_id'));
+        $prodotto=Prodotto::find($request->get('product_id'));
         $prodotto->nome_e_codice= $request->get('nome_e_codice');
         $prodotto->descrizione= $request->get('descrizione');
         $prodotto->modi_installazione= $request->get('modi_installazione');

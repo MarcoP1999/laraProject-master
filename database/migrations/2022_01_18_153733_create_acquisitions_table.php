@@ -15,9 +15,11 @@ class CreateAcquisitionsTable extends Migration
     {
         Schema::create('acquisitions', function (Blueprint $table) {
             $table->bigIncrements('id_acquisizione');
-            $table->integer('id_malfunzionamento');
-            $table->integer('id_soluzione');
-            $table->timestamps();
+            $table->bigInteger('id_malfunzionamento')->unsigned();
+            $table->bigInteger('id_soluzione')->unsigned();
+            $table->foreign('id_malfunzionamento')->references('malfunction_id')->on('malfunctions')->onDelete('cascade');
+            $table->foreign('id_soluzione')->references('solution_id')->on('solutions')->onDelete('cascade');
+            //$table->timestamps();
         });
     }
 

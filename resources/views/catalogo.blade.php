@@ -13,7 +13,7 @@
         <!-- CATALOGO -->
                 <div id="contenuto_catalogo">
                 @if($prodotti->total() == 1)
-                    <h4 style="margin: 10px auto auto 350px;">1 PRODOTTO</h4>
+                    <h4 style="margin: 10px auto auto 350px;">1 PRODOTTO </h4>
                 @else
                     <h4 style="margin: 10px auto auto 350px;">{{ $prodotti->total() }} PRODOTTI</h4>
                 @endif
@@ -43,11 +43,11 @@
                 <div style="margin-left: 10px">
                     <br>
                     <h3>Ricerca</h3>
-                    <form class="" action="{{ route('processForm') }}" method="post">
+                    <form class="" action="{{ route('showFilteredCatalog') }}" method="get">
                         @csrf
                         <fieldset>
                             <legend>Descrizione del prodotto</legend>
-                            <input @isset($filtri) value="{{ $filtri['descrizione'] }}" @endisset type="text" class="search-input" style="width: 200px" maxlength="50" name="descrizione" placeholder="Descrizione">
+                            <textarea @isset($filtri) value="{{ $filtri }}" @endisset type="text" class="search-input" style="width: 200px; height:120px; resize: none" maxlength="1000" name="descrizione" placeholder="Descrizione"></textarea>
                         </fieldset>
                         <fieldset>
                             <button class="form_btn" type="submit">Applica</button>

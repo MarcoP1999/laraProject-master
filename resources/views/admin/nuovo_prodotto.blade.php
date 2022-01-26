@@ -39,7 +39,7 @@
                                     </span>
                 @enderror
                 <br><br>
-                <label for="note_buon_uso"><h6>Descrizione</h6></label>
+                <label for="note_buon_uso"><h6>Note Buon Uso</h6></label>
                 <textarea style="width:990px;height:120px;" type="text" id="note_buon_uso" name="note_buon_uso">{{old('note_buon_uso')}}</textarea>
                 @error('Note_buon_uso')
                 <span class="invalid-feedback" role="alert">
