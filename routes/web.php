@@ -26,15 +26,8 @@ Route::get('/faq', 'PublicController@showFAQ') -> name('faq');
 // Rotta per contatti
 Route::view('/contatti', 'contatti') -> name('contatti');
 
-// Rotta area tecnici
-Route::get('/staff', 'LV3Controller@showAreaOrganizzatori') -> name('org_area')->middleware('can:isStaff');
-
-//Rotta per cancellare prodotti
-Route::get('/staff/cancellaevento/{id}', 'LV3Controller@cancellaEvento') -> name('cancellaEvento')->middleware('can:isStaff');
-
-//Rotte per modifica prodotti
-Route::get('/staff/modificaevento/{id_evento}', 'LV3Controller@showFormModificaEvento') -> name('modificaEvento')->middleware('can:isStaff');
-Route::post('/staff/modificaevento', 'LV3Controller@modificaEvento') -> name('modEvento')->middleware('can:isStaff');
+// Rotta area staff
+Route::get('/staff', 'LV3Controller@showAreaStaff') -> name('org_area')->middleware('can:isStaff');
 
 // Rotta per scheda prodotto
 Route::get('/prodotto/{id_prodotto}', 'PublicController@productDetails') -> name('productDetails');

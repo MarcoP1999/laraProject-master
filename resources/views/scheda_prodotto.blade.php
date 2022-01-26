@@ -34,7 +34,7 @@
                 </ul>
             </div>
         </div>
-        @can('isTecn')
+        @auth
             <div class="malfunzionamenti e soluzioni">
                 <div class="malfunzionamenti">
                     <h3>Malfunzionamenti</h3>
@@ -43,26 +43,6 @@
                     <h3>Soluzioni</h3>
                 </div>
             </div>
-        @endcan
-        @can('isStaff')
-            <div class="malfunzionamenti e soluzioni">
-                <div class="malfunzionamenti">
-                    <h3>Malfunzionamenti</h3>
-                </div>
-                <div class="soluzioni">
-                    <h3>Soluzioni</h3>
-                </div>
-            </div>
-        @endcan
-        @can('isAdmin')
-            <div class="malfunzionamenti e soluzioni">
-                <div class="malfunzionamenti">
-                    <h3>Malfunzionamenti</h3>
-                </div>
-                <div class="soluzioni">
-                    <h3>Soluzioni</h3>
-                </div>
-            </div>
-        @endcan
+        @endauth
     </div>
 @endsection

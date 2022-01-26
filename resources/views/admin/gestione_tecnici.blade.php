@@ -1,6 +1,6 @@
 @extends('layouts.struttura')
 
-@section('title', 'Gestione utenti')
+@section('title', 'Gestione tecnici')
 
 @section('breadcrumb')
     <li><a href="{{ route('admin') }}">Admin</a></li>

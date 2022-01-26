@@ -59,6 +59,7 @@ class LV4Controller extends Controller
         return view('admin.modifica_prodotto')
             ->with('dati', $dati[0]);
     }
+
     public function modificaProdotto(NewProductRequest $request){
         $this->_AdminModel->setProductData($request);
         return redirect()->route('admin')->with('alert', 'Modifiche avvenute con successo');
@@ -79,14 +80,6 @@ class LV4Controller extends Controller
         $_AdminModel->deleteTecnDB($id);
 
         return redirect()->route('showTecn');
-    }
-
-
-    public function modificaDati(){
-        if($_POST['password'] != $_POST['password_confirm']) return redirect()->back()->with('alert', 'Le password non corrispondono.');
-        $ok = $this->_AdminModel->setTecnData($_POST);
-        if (!$ok) return redirect()->back()->with('alert', 'Modifiche non avvenute. Password precedente sbagliata.');
-        else return redirect()->route('admin');
     }
 
     public function showStaff(){

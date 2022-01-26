@@ -39,9 +39,6 @@ class PublicModel
         return $prodotti->paginate(5);
     }
 
-
-
-
     public function getFAQ() {
 
         $faq = FAQ::all();
