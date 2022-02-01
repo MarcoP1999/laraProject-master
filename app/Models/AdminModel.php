@@ -12,14 +12,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Request;
 use PhpParser\Node\Expr\Array_;
+use Illuminate\Support\Facades\Hash;
 
 class AdminModel extends Model
 {
-    public function getProdotti() {
-        $prodotti = DB::table('products')
-            ->paginate(5);
-        return $prodotti;
-    }
 
     public function setNewProductData($request){
         $product = new Prodotto;
@@ -112,16 +108,16 @@ class AdminModel extends Model
     public function setStaffData ($request, $id){
         $utenti = Utente::where('id', $id)->get();
         $staff = $utenti[0];
-        $staff->username= $request['username'];
         $staff->email= $request['email'];
+        if($request['password'] != '') $staff->password= Hash::make($request['password']);
         $staff->save();
     }
 
     public function setTecnData($request, $id){
         $utenti = Utente::where('id',$id)->get();
         $tecnici = $utenti[0];
-        $tecnici->username= $request['username'];
         $tecnici->email= $request['email'];
+        if($request['password'] != '') $tecnici->password= Hash::make($request['password']);
         $tecnici->save();
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FilterRequest;
 use App\Http\Requests\NewProductRequest;
 use App\Http\Requests\NewUserRequest;
+use App\Http\Requests\ModifyUserRequest;
 use App\Models\PublicModel;
 use App\Models\UserModel;
 use App\Models\AdminModel;
@@ -17,6 +18,7 @@ class LV4Controller extends Controller
 {
 
     protected $_AdminModel;
+    protected $_PublicModel;
     /**
      * Create a new controller instance.
      *
@@ -26,6 +28,7 @@ class LV4Controller extends Controller
     {
         $this->middleware('auth');
         $this->_AdminModel = new AdminModel;
+        $this->_PublicModel = new PublicModel;
     }
 
     /**
@@ -35,8 +38,8 @@ class LV4Controller extends Controller
      */
     public function showAreaAdmin()
     {
-        $_AdminModel=new AdminModel;
-         $prodotti = $this->_AdminModel->getProdotti();
+        $_PublicModel=new PublicModel;
+         $prodotti = $this->_PublicModel->getProducts();
 
 
         return view('admin.admin')
@@ -115,15 +118,15 @@ class LV4Controller extends Controller
             ->with('dati_staff', $dati_staff[0]);
     }
 
-    public function modifyDataTecn ($id){
-
-        $this->_AdminModel->setTecnData($_POST, $id);
+    public function modifyDataTecn (ModifyUserRequest $request, $id){
+        if($_POST['password'] != $_POST['password_confirm']) return redirect()->back()->with('alert', 'Le password non corrispondono.');
+        $ok =$this->_AdminModel->setTecnData($_POST, $id);
         return redirect()->route('showTecn')->with('alert', 'Modifiche avvenute con successo');
     }
 
-    public function modifyDataStaff ($id){
-
-        $this->_AdminModel->setStaffData($_POST, $id);
+    public function modifyDataStaff (ModifyUserRequest $request, $id){
+        if($_POST['password'] != $_POST['password_confirm']) return redirect()->back()->with('alert', 'Le password non corrispondono.');
+        $ok =$this->_AdminModel->setStaffData($_POST, $id);
         return redirect()->route('showStaff')->with('alert', 'Modifiche avvenute con successo');
     }
 

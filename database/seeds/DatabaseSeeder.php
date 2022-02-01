@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
                 'surname'=>NULL ],
 
             ['id' => '4',
-                'username'=>'cliente001',
+                'username'=>'tecnico001',
                 'name' => 'Nome',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
                 'surname'=>'Cognome'],
 
             ['id' => '5',
-                'username'=>'cliente002',
+                'username'=>'tecnico002',
                 'name' => 'Nome',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
                 'surname'=>'Cognome'],
 
             ['id' => '6',
-                'username'=>'cliente003',
+                'username'=>'tecnico003',
                 'name' => 'Nome',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
                 'surname'=>'Cognome'],
 
             ['id' => '7',
-                'username'=>'cliente004',
+                'username'=>'tecnico004',
                 'name' => 'Nome',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
                 'surname'=>'Cognome'],
 
             ['id' => '8',
-                'username'=>'cliente005',
+                'username'=>'tecnico005',
                 'name' => 'Nome',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
@@ -85,106 +85,7 @@ class DatabaseSeeder extends Seeder
                 'surname'=>'Cognome'],
 
             ['id' => '9',
-                'username'=>'cliente006',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '10',
-                'username'=>'cliente007',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '11',
-                'username'=>'cliente008',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '12',
-                'username'=>'cliente009',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '13',
-                'username'=>'cliente010',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '14',
-                'username'=>'cliente011',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '15',
-                'username'=>'cliente012',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '16',
-                'username'=>'cliente013',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '17',
-                'username'=>'cliente014',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '18',
-                'username'=>'cliente015',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '19',
-                'username'=>'cliente016',
-                'name' => 'Nome',
-                'password' => Hash::make('xxxxxxxx'),
-                'piva' => NULL,
-                'livello_utenza'=>'2',
-                'email'=>'cliente@test.com',
-                'surname'=>'Cognome'],
-
-            ['id' => '22',
-                'username'=>'org03',
+                'username'=>'staff03',
                 'name' => 'pippo',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => '123456789',
@@ -194,7 +95,7 @@ class DatabaseSeeder extends Seeder
 
 
 
-            ['id' => '30',
+            ['id' => '10',
                 'username'=>'admin1',
                 'name' => NULL,
                 'password' => Hash::make('xxxxxxxx'),
@@ -229,12 +130,39 @@ class DatabaseSeeder extends Seeder
 
         DB::table('malfunctions')->insert([
             ['malfunction_id'=> '1',
-                'descrizione_malfunzionamento' => 'capiamo parte terza'],
+                'descrizione_malfunzionamento' => 'malf 1',
+                'id_prodotto'=>'1'],
         ]);
+
+        DB::table('malfunctions')->insert([
+            ['malfunction_id'=> '2',
+                'descrizione_malfunzionamento' => 'malf 2',
+            'id_prodotto'=>'1'],
+        ]);
+
+        DB::table('malfunctions')->insert([
+            ['malfunction_id'=> '3',
+                'descrizione_malfunzionamento' => 'malf 3',
+                'id_prodotto'=>'1'],
+        ]);
+
 
         DB::table('solutions')->insert([
             ['solution_id'=> '1',
-                'descrizione_soluzione' => 'capiamo parte quarta',],
+                'descrizione_soluzione' => 'soluz 1 malf 1',
+                'id_malfunzionamento'=>'1' ],
+        ]);
+
+        DB::table('solutions')->insert([
+            ['solution_id'=> '2',
+                'descrizione_soluzione' => 'soluzione 2 malfunz 1',
+                'id_malfunzionamento'=>'1' ],
+        ]);
+
+        DB::table('solutions')->insert([
+            ['solution_id'=> '3',
+                'descrizione_soluzione' => 'soluzione 1 malfunz 3',
+                'id_malfunzionamento'=>'3' ],
         ]);
     }
 }

@@ -47,7 +47,12 @@
                         @csrf
                         <fieldset>
                             <legend>Descrizione del prodotto</legend>
-                            <textarea @isset($filtri) value="{{ $filtri }}" @endisset type="text" class="search-input" style="width: 200px; height:120px; resize: none" maxlength="1000" name="descrizione" placeholder="Descrizione"></textarea>
+                            @isset($request->descrizione)
+                            <textarea    type="text" class="search-input" style="width: 200px; height:120px; resize: none" maxlength="1000" name="descrizione" placeholder="Descrizione">{{$request->descrizione}}</textarea>
+                            @endisset
+                            @empty($request->descrizione)
+                            <textarea    type="text" class="search-input" style="width: 200px; height:120px; resize: none" maxlength="1000" name="descrizione" placeholder="Descrizione"></textarea>
+                            @endempty
                         </fieldset>
                         <fieldset>
                             <button class="form_btn" type="submit">Applica</button>

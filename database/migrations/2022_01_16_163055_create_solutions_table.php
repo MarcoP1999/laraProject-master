@@ -1,10 +1,11 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFeedbacksTable extends Migration
+class CreateSolutionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +14,11 @@ class CreateFeedbacksTable extends Migration
      */
     public function up()
     {
-        Schema::create('feedbacks', function (Blueprint $table) {
-            $table->bigIncrements('id_riscontro');
-            $table->bigInteger('id_prodotto')->unsigned();
-            $table->bigInteger('id_malfunzionamento')->unsigned();
-            $table->foreign('id_prodotto')->references('product_id')->on('products')->onDelete('cascade');
+        Schema::create('solutions', function (Blueprint $table) {
+            $table->bigIncrements('solution_id');
+            $table->longText('descrizione_soluzione');
+            $table->unsignedBigInteger('id_malfunzionamento');
             $table->foreign('id_malfunzionamento')->references('malfunction_id')->on('malfunctions')->onDelete('cascade');
-           // $table->timestamps();
         });
     }
 
@@ -30,6 +29,6 @@ class CreateFeedbacksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedbacks');
+        Schema::dropIfExists('solutions');
     }
 }

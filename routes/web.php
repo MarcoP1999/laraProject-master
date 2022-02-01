@@ -25,8 +25,12 @@ Route::get('/faq', 'PublicController@showFAQ') -> name('faq');
 // Rotta per contatti
 Route::view('/contatti', 'contatti') -> name('contatti');
 
+Route::get('/staff/gestione3/{product_id}', 'Lv3Controller@showGestione3') -> name('gestione3')->middleware('can:isStaff');
+
+Route::get('/admin/gestione4', 'Lv4Controller@showGestione4') -> name('gestione4')->middleware('can:isAdmin');
+
 // Rotta area staff
-Route::get('/staff', 'LV3Controller@showAreaStaff') -> name('org_area')->middleware('can:isStaff');
+Route::get('/staff', 'LV3Controller@showAreaStaff') -> name('staff_area')->middleware('can:isStaff');
 
 // Rotta per scheda prodotto
 Route::get('/prodotto/{id_prodotto}', 'PublicController@productDetails') -> name('productDetails');
@@ -41,7 +45,6 @@ Route::post('logout', 'Auth\LoginController@logout')
     ->name('logout');
 
 // Rotta per home lv.4
-/*Route::view('/admin', 'admin.admin') -> name('admin') -> middleware('can:isAdmin');*/
 Route::get('/admin', 'LV4Controller@showAreaAdmin') -> name('admin')->middleware('can:isAdmin');
 
 // Rotta crea prodotto

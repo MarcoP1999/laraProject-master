@@ -9,10 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class OrgModel extends Model
+class StaffModel extends Model
 {
      public function getStaffData($id_utente){
         return Utente::where('id', $id_utente)->get();
     }
-
 }
