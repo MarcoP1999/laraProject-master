@@ -126,24 +126,40 @@ class DatabaseSeeder extends Seeder
                 'nome_e_codice' => 'Lavatrice Indesit MTWA 71252 W IT',
                 'descrizione' => 'Lavatrice Indesit MTWA 71252 W IT lavatrice Caricamento frontale 7 kg 1200 Giri/min E Bianco',
                 'note_buon_uso' => 'capiamo parte seconda'],
+
+            ['product_id'=> '2',
+                'image_catalogo'=> NULL ,
+                'modi_installazione' => 'Boh, capiamo.',
+                'nome_e_codice' => 'Lavastoviglie',
+                'descrizione' => 'Lavastoviglie AAA bella bella',
+                'note_buon_uso' => 'capiamo parte seconda'],
+
         ]);
 
         DB::table('malfunctions')->insert([
             ['malfunction_id'=> '1',
-                'descrizione_malfunzionamento' => 'malf 1',
+                'descrizione_malfunzionamento' => 'malf 1 prodotto 1',
                 'id_prodotto'=>'1'],
-        ]);
 
-        DB::table('malfunctions')->insert([
             ['malfunction_id'=> '2',
-                'descrizione_malfunzionamento' => 'malf 2',
+                'descrizione_malfunzionamento' => 'malf 2 prodotto 1',
             'id_prodotto'=>'1'],
-        ]);
 
-        DB::table('malfunctions')->insert([
             ['malfunction_id'=> '3',
                 'descrizione_malfunzionamento' => 'malf 3',
                 'id_prodotto'=>'1'],
+
+            ['malfunction_id'=> '4',
+                'descrizione_malfunzionamento' => 'malf 4',
+                'id_prodotto'=>'1'],
+
+            ['malfunction_id'=> '5',
+                'descrizione_malfunzionamento' => 'malf 5',
+                'id_prodotto'=>'2'],
+
+            ['malfunction_id'=> '6',
+                'descrizione_malfunzionamento' => 'malf 6',
+                'id_prodotto'=>'2'],
         ]);
 
 
@@ -151,18 +167,14 @@ class DatabaseSeeder extends Seeder
             ['solution_id'=> '1',
                 'descrizione_soluzione' => 'soluz 1 malf 1',
                 'id_malfunzionamento'=>'1' ],
-        ]);
 
-        DB::table('solutions')->insert([
             ['solution_id'=> '2',
-                'descrizione_soluzione' => 'soluzione 2 malfunz 1',
-                'id_malfunzionamento'=>'1' ],
-        ]);
-
-        DB::table('solutions')->insert([
-            ['solution_id'=> '3',
-                'descrizione_soluzione' => 'soluzione 1 malfunz 3',
+                'descrizione_soluzione' => 'soluzione 2 malfunz 3',
                 'id_malfunzionamento'=>'3' ],
+
+            ['solution_id'=> '3',
+                'descrizione_soluzione' => 'soluzione 1 malfunz 2',
+                'id_malfunzionamento'=>'6' ],
         ]);
     }
 }

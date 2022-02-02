@@ -35,18 +35,15 @@
             </div>
         </div>
         @auth
-            <div class="malfunzionamenti_e_soluzioni">
-                <div class="malfunzionamenti">
-                    <h3>Malfunzionamenti</h3>
+            <div class="malfunzionamenti_e_soluzioni" style="height: 403px; overflow: scroll">
+                    <h3>Malfunzionamenti e Soluzioni</h3>
                         @for($i=0;$i<count($malfunzionamenti);$i++)
-                            <br><h5 style="padding-left: 0px"><b>{{ $malfunzionamenti[$i]->descrizione_malfunzionamento }}</b></h5>
+                            <br><h5 style="padding-left: 10px"><b>{{ $malfunzionamenti[$i]->descrizione_malfunzionamento }}</b></h5>
                                @php $soluzione=$soluzioni[$i+1]@endphp
                                 @foreach($soluzione as $desc_soluzione)
-                            <br><h5 style="padding-left: 0px"><b>{{ $desc_soluzione->descrizione_soluzione}}</b></h5>
+                            <br><h5 style="padding-left: 30px"><b>{{ $desc_soluzione->descrizione_soluzione}}</b></h5>
                                 @endforeach
-
                         @endfor
-                </div>
             </div>
         @endauth
     </div>

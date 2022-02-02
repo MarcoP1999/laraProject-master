@@ -7,12 +7,6 @@
 @endsection
 
 @section('content')
-    <script>
-        var msg = '{{Session::get('alert')}}';
-        var exist = '{{Session::has('alert')}}';
-        if(exist){
-            alert(msg);
-        }
     </script>
     <div id="container2">
         <div id="contenuto_catalogo">
@@ -60,6 +54,7 @@
                                 <li><a class="prova" href="{{ route ('showTecn') }}"><h6>Gestione tecnici</h6></a></li>
                                 <li><a class="prova" href="{{ route ('showStaff') }}"><h6>Gestione staff azienda</h6></a></li>
                                 <li><a class="prova" href="{{ route ('showFaqAdmin') }}"><h6>Modifica FAQ</h6></a></li>
+                                <li><a class="prova" href="{{ route ('gestione4',[$prodotto->product_id]) }}"><h6>Malfunzionamenti e soluzioni</h6></a></li>
                             </ul>
                         </div>
                     </div>
@@ -67,5 +62,4 @@
             </aside>
         </div>
     </div>
-
 @endsection

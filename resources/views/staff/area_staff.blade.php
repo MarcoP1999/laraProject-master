@@ -8,13 +8,6 @@
 
 
 @section('content')
-    <script>
-        var msg = '{{Session::get('alert')}}';
-        var exist = '{{Session::has('alert')}}';
-        if(exist){
-            alert(msg);
-        }
-    </script>
     <div id="container2">
         <div id="contenuto_catalogo">
             <div class="header_org">
@@ -32,7 +25,6 @@
                             <div class=""> <img src="{{ asset('images/' . $prodotto->image_catalogo) }}" alt="" class="immagine_prodotto"> </div>
                             <div class="testo_concerto">
                                 <h4>{{$prodotto->nome_e_codice}}</h4>
-                                <!-- Titolo, Data, Luogo, Prezzo-->
                             </div>
                             <div class="options">
                                 <h6>

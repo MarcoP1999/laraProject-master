@@ -8,15 +8,6 @@
 @endsection
 
 @section('content')
-
-    <script>
-        var msg = '{{Session::get('alert')}}';
-        var exist = '{{Session::has('alert')}}';
-        if(exist){
-            alert(msg);
-        }
-    </script>
-
     <div id="container2">
         <!-- elenco tecnici -->
         <div id="contenuto_catalogo">

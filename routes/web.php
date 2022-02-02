@@ -27,7 +27,7 @@ Route::view('/contatti', 'contatti') -> name('contatti');
 
 Route::get('/staff/gestione3/{product_id}', 'Lv3Controller@showGestione3') -> name('gestione3')->middleware('can:isStaff');
 
-Route::get('/admin/gestione4', 'Lv4Controller@showGestione4') -> name('gestione4')->middleware('can:isAdmin');
+Route::get('/admin/gestione4/{product_id}', 'Lv4Controller@showGestione4') -> name('gestione4')->middleware('can:isAdmin');
 
 // Rotta area staff
 Route::get('/staff', 'LV3Controller@showAreaStaff') -> name('staff_area')->middleware('can:isStaff');

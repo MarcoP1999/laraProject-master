@@ -141,6 +141,19 @@ class LV4Controller extends Controller
         return redirect()->route('showStaff');
     }
 
+    public function showGestione4($id_prodotto) {
+
+        $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
+        foreach ($malfunzionamenti as $malfunzionamento) {
+            $soluzioni[$malfunzionamento->malfunction_id]=$this->_PublicModel->getSolutionsDetails($malfunzionamento->malfunction_id);
+        };
+
+
+        return view('admin.gestione4_malf_sol')
+            ->with('malfunzionamenti', $malfunzionamenti)
+            ->with('soluzioni', $soluzioni);
+    }
+
     public function showFaqAdmin () {
         $_AdminModel=new AdminModel;
 

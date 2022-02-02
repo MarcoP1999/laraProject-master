@@ -15,7 +15,7 @@ class PublicModel
 {
     public function getProducts() {
         $prodotti = DB::table('products')
-            ->paginate(1);
+            ->paginate(5);
         return $prodotti;
     }
 

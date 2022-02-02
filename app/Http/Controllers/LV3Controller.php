@@ -44,7 +44,7 @@ class LV3Controller extends Controller
             array_push($malfunzionamenti,$info[$i]->descrizione_malfunzionamenti);
         }
 
-        return view('gestione_prodotto')
+        return view('staff.gestione3_malf_sol')
             ->with('info', $malfunzionamenti);
     }
 

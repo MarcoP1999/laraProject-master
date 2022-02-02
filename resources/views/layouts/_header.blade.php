@@ -31,7 +31,7 @@
 		@can('isStaff')
 		@if(Route::current()->uri != 'staff')
 	     	<div class="btn_nav">
-			    	<button class="lgn_btn"  type="button" name="button" onclick="window.location='{{route('staff_area')}}'">Area Organizzatori</button>
+			    	<button class="lgn_btn"  type="button" name="button" onclick="window.location='{{route('staff_area')}}'">Area Staff</button>
 		    </div>
 		@endif
 		@endcan
