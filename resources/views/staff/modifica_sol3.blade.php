@@ -1,11 +1,9 @@
 @extends('layouts.struttura')
 
-@section('title', 'Modifica Soluzioni Admin')
+@section('title', 'Modifica soluzione Staff')
 
 @section('breadcrumb')
-    <li><a href="{{ route('admin') }}">Admin</a></li>
-    <li><a href="{{ route('showFaqAdmin') }}">FAQ</a></li>
-    <li><a href="{{ route('modifyFaq', [$dati_faq->id]) }}">Modifica FAQ</a></li>
+    <li><a href="{{ route('staff_area') }}">Area staff</a></li>
 @endsection
 
 @section('content')

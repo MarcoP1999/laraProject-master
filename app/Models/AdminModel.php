@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Resources\Eventi;
+use App\Models\Resources\Malfunzionamento;
 use App\Models\Resources\Prodotto;
 use App\Models\Resources\Utente;
 use App\Models\Resources\FAQ;
@@ -75,6 +76,14 @@ class AdminModel extends Model
         };
     }
 
+    public function addMalf4($desc_malf,$id_prodotto) {
+        //dd($request);
+        $malfunzionamento = new Malfunzionamento;
+
+        $malfunzionamento->descrizione_malfunzionamento=$desc_malf;
+        $malfunzionamento->id_prodotto=$id_prodotto;
+        $malfunzionamento->save();
+    }
 
     public function getTecn(){
         return Utente::where('livello_utenza', 2) -> orderBy('username') -> paginate(5);
@@ -108,6 +117,7 @@ class AdminModel extends Model
     public function setStaffData ($request, $id){
         $utenti = Utente::where('id', $id)->get();
         $staff = $utenti[0];
+        $staff->n_tel=$request['n_tel'];
         $staff->email= $request['email'];
         if($request['password'] != '') $staff->password= Hash::make($request['password']);
         $staff->save();
@@ -116,6 +126,7 @@ class AdminModel extends Model
     public function setTecnData($request, $id){
         $utenti = Utente::where('id',$id)->get();
         $tecnici = $utenti[0];
+        $tecnici->n_tel=$request['n_tel'];
         $tecnici->email= $request['email'];
         if($request['password'] != '') $tecnici->password= Hash::make($request['password']);
         $tecnici->save();

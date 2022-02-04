@@ -27,6 +27,7 @@ class ModifyUserRequest extends FormRequest {
         return [
             'password' => ['nullable','min:8'],
             'email' => ['required'],
+            'n_tel' => 'max:10',
         ];
     }
 }

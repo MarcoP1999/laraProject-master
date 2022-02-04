@@ -19,6 +19,7 @@
                                 <li><a href="{{ route ('showTecn') }}"><h6>Gestione tecnici</h6></a></li>
                                 <li><a href="{{ route ('showStaff') }}"><h6>Gestione staff azienda</h6></a></li>
                                 <li><a href="{{ route ('showFaqAdmin') }}"><h6>Modifica FAQ</h6></a></li>
+                                <li><a class="prova" href="{{ route ('gestione_prod4') }}"><h6>Malfunzionamenti e soluzioni</h6></a></li>
                             </ul>
                         </div>
                     </div>
@@ -30,39 +31,31 @@
                 <h3>Lista FAQ</h3>
                 <div class="bottone_admin">
                     <div class="bottone_prodotto">
-                        <a href="{{route ('addFaq')}}"><button type="button" name="button" class="lgn_btn">Aggiungi nuova FAQ</button></a>
+                        <a href="{{route ('addMalf4',$id_prodotto)}}"><button type="button" name="button" class="lgn_btn">Aggiungi Malfunzionamento</button></a>
                     </div>
                 </div>
             </div>
             <ul>
                 <br><br><br>
-                @for($i=0;$i<count($malfunzionamenti);$i++)
-                    <h3>Malfunzionamento</h3>
+                @foreach($malfunzionamenti as $malfunzionamento)
+
                     <li id="elemento_lista">
+                        <h3>Malfunzionamento</h3>
                         <div class="optionsUp">
                             <h5>
-                                <a style="color: #225bda" href="{{route ('modifyFaq', [$malfunzionamenti[$i]->malfunction_id]) }}">Modifica</a><br>
-                                <a href="{{route ('deleteFaq', [$malfunzionamenti[$i]->malfunction_id])}}" onclick="return confirm('Sei sicuro di voler eliminare l\'elemento selezionato?')">Elimina</a>
+                                <a style="color: #225bda" href="{{route ('modifyFaq', [$malfunzionamento->malfunction_id]) }}">Modifica</a><br>
+                                <a style="color: #17b483" href="{{route ('addFaq')}}">Aggiungi Soluzione</a><br>
+                                <a href="{{route ('deleteFaq', [$malfunzionamento->malfunction_id])}}" onclick="return confirm('Sei sicuro di voler eliminare l\'elemento selezionato?')">Elimina</a>
                             </h5>
                         </div>
                         <div class="faqAdmin">
-                                <br><h5 style="padding-left: 0px"><b>{{ $malfunzionamenti[$i]->descrizione_malfunzionamento }}</b></h5>
-                                @php $soluzione=$soluzioni[$i+1]@endphp
-                                @foreach($soluzione as $desc_soluzione)
-                                <h3>Soluzione</h3>
-                        <li id="elemento_lista" style="padding-right: 100px">
-                            <div class="optionsUp">
-                                <h5>
-                                    <a style="color: #225bda" href="{{route ('modifyFaq', [$desc_soluzione->solution_id]) }}">Modifica</a><br>
-                                    <a href="{{route ('deleteFaq', [$desc_soluzione->solution_id])}}" onclick="return confirm('Sei sicuro di voler eliminare l\'elemento selezionato?')">Elimina</a>
-                                </h5>
+                                <br><h5 ><b>{{ $malfunzionamento->descrizione_malfunzionamento }}</b></h5>
                             </div>
-                                    <br><h5 style="padding-left: 0px"><b>{{ $desc_soluzione->descrizione_soluzione}}</b></h5>
                                 @endforeach
-                            @endfor
                         </li>
-                        </div>
-                    </li>
             </ul>
+                        </div>
+
+
         </div>
 @endsection

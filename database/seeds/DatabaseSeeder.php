@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
                 'username'=>'tecntecn',
                 'name' => 'Nome',
                 'password' => Hash::make('EL7qv56w'),
-                'piva' => NULL,
+                'piva' => 123,
                 'livello_utenza'=>'2',
+                'n_tel'=> 1234567890,
                 'email'=>'cliente@test.com',
                 'surname'=>'Cognome'],
 
@@ -25,7 +26,8 @@ class DatabaseSeeder extends Seeder
                 'username'=>'staffstaff',
                 'name' => 'marcos',
                 'password' => Hash::make('EL7qv56w'),
-                'piva' => '123456789',
+                'piva' => NULL,
+                'n_tel'=> 1234567890,
                 'livello_utenza'=>'3',
                 'email'=>'organizzatore@test.com',
                 'surname'=> 'proietti'],
@@ -35,6 +37,7 @@ class DatabaseSeeder extends Seeder
                 'name' => NULL,
                 'password' => Hash::make('EL7qv56w'),
                 'piva' => NULL,
+                'n_tel'=> 1234567890,
                 'livello_utenza'=>'4',
                 'email'=>'admin@test.com',
                 'surname'=>NULL ],
@@ -44,6 +47,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Nome',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
+                'n_tel'=> 1234567890,
                 'livello_utenza'=>'2',
                 'email'=>'cliente@test.com',
                 'surname'=>'Cognome'],
@@ -53,6 +57,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Nome',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
+                'n_tel'=> 1234567890,
                 'livello_utenza'=>'2',
                 'email'=>'cliente@test.com',
                 'surname'=>'Cognome'],
@@ -62,6 +67,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Nome',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
+                'n_tel'=> 1234567890,
                 'livello_utenza'=>'2',
                 'email'=>'cliente@test.com',
                 'surname'=>'Cognome'],
@@ -71,6 +77,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Nome',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
+                'n_tel'=> 1234567890,
                 'livello_utenza'=>'2',
                 'email'=>'cliente@test.com',
                 'surname'=>'Cognome'],
@@ -80,6 +87,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Nome',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
+                'n_tel'=> 1234567890,
                 'livello_utenza'=>'2',
                 'email'=>'cliente@test.com',
                 'surname'=>'Cognome'],
@@ -89,6 +97,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'pippo',
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => '123456789',
+                'n_tel'=> 1234567890,
                 'livello_utenza'=>'3',
                 'email'=>'org3@test.com',
                 'surname'=>'pluto' ],
@@ -100,6 +109,7 @@ class DatabaseSeeder extends Seeder
                 'name' => NULL,
                 'password' => Hash::make('xxxxxxxx'),
                 'piva' => NULL,
+                'n_tel'=> 1234567890,
                 'livello_utenza'=>'4',
                 'email'=>'admin1@test.com',
                 'surname'=> NULL],
@@ -128,10 +138,10 @@ class DatabaseSeeder extends Seeder
                 'note_buon_uso' => 'capiamo parte seconda'],
 
             ['product_id'=> '2',
-                'image_catalogo'=> NULL ,
+                'image_catalogo'=> NULL,
                 'modi_installazione' => 'Boh, capiamo.',
-                'nome_e_codice' => 'Lavastoviglie',
-                'descrizione' => 'Lavastoviglie AAA bella bella',
+                'nome_e_codice' => 'Lavastoviglie 1',
+                'descrizione' => 'Lavastoviglie di gran classe',
                 'note_buon_uso' => 'capiamo parte seconda'],
 
         ]);
@@ -146,20 +156,12 @@ class DatabaseSeeder extends Seeder
             'id_prodotto'=>'1'],
 
             ['malfunction_id'=> '3',
-                'descrizione_malfunzionamento' => 'malf 3',
-                'id_prodotto'=>'1'],
+                'descrizione_malfunzionamento' => 'malf 1 prodotto 2',
+                'id_prodotto'=>'2'],
 
             ['malfunction_id'=> '4',
-                'descrizione_malfunzionamento' => 'malf 4',
+                'descrizione_malfunzionamento' => 'malf 3 prodotto 1',
                 'id_prodotto'=>'1'],
-
-            ['malfunction_id'=> '5',
-                'descrizione_malfunzionamento' => 'malf 5',
-                'id_prodotto'=>'2'],
-
-            ['malfunction_id'=> '6',
-                'descrizione_malfunzionamento' => 'malf 6',
-                'id_prodotto'=>'2'],
         ]);
 
 
@@ -169,12 +171,12 @@ class DatabaseSeeder extends Seeder
                 'id_malfunzionamento'=>'1' ],
 
             ['solution_id'=> '2',
-                'descrizione_soluzione' => 'soluzione 2 malfunz 3',
+                'descrizione_soluzione' => 'soluzione 1 malfunz 3',
                 'id_malfunzionamento'=>'3' ],
 
             ['solution_id'=> '3',
-                'descrizione_soluzione' => 'soluzione 1 malfunz 2',
-                'id_malfunzionamento'=>'6' ],
+                'descrizione_soluzione' => 'soluzione 1 malfunz 4',
+                'id_malfunzionamento'=>'4' ],
         ]);
     }
 }

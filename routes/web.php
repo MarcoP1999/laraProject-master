@@ -27,6 +27,7 @@ Route::view('/contatti', 'contatti') -> name('contatti');
 
 Route::get('/staff/gestione3/{product_id}', 'Lv3Controller@showGestione3') -> name('gestione3')->middleware('can:isStaff');
 
+Route::post('/admin/gestione_prod4', 'Lv4Controller@showGestioneProd4') -> name('gestione_prod4')->middleware('can:isAdmin');
 Route::get('/admin/gestione4/{product_id}', 'Lv4Controller@showGestione4') -> name('gestione4')->middleware('can:isAdmin');
 
 // Rotta area staff
@@ -35,6 +36,9 @@ Route::get('/staff', 'LV3Controller@showAreaStaff') -> name('staff_area')->middl
 // Rotta per scheda prodotto
 Route::get('/prodotto/{id_prodotto}', 'PublicController@productDetails') -> name('productDetails');
 Route::get('/prodotto/{product_id}', 'PublicController@productDetails') -> name('productDetails');
+
+Route::get('/soluzione/{id_prodotto}', 'PublicController@solutionDetails') -> name('solutionDetails');
+Route::get('/soluzione/{product_id}', 'PublicController@solutionDetails') -> name('solutionDetails');
 
 // Rotte per l'autenticazione
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -59,6 +63,8 @@ Route::get('/admin/modificaprodotto/{id_evento}', 'LV4Controller@showFormModific
 Route::post('/admin/modificaprodotto', 'LV4Controller@modificaProdotto') -> name('modProdotto')->middleware('can:isAdmin');
 
 Route::get('/admin/cancellaprodotto/{id}', 'LV4Controller@cancellaProdotto') -> name('cancellaProdotto')->middleware('can:isAdmin');
+
+Route::post('/admin/gestioneprodotti4/gestionemalfsol4/nuovo_malf4', 'LV4Controller@addNewMalf4') -> name('addNewMalf4') -> middleware('can:isAdmin');
 
 Route::get('/admin/tecnici', 'LV4Controller@showTecn') -> name('showTecn') -> middleware('can:isAdmin');
 

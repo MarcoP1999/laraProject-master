@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
     <li><a href="{{ route('showCatalog') }}">Catalogo</a></li>
-    <li><a href="{{ route('productDetails', [$prodotto[0]->product_id]) }}">Prodotto</a></li>
+
 @endsection
 
 @section('content')
@@ -36,14 +36,11 @@
         </div>
         @auth
             <div class="malfunzionamenti_e_soluzioni" style="height: 403px; overflow: scroll">
-                    <h3>Malfunzionamenti e Soluzioni</h3>
-                        @for($i=0;$i<count($malfunzionamenti);$i++)
-                            <br><h5 style="padding-left: 10px"><b>{{ $malfunzionamenti[$i]->descrizione_malfunzionamento }}</b></h5>
-                               @php $soluzione=$soluzioni[$i+1]@endphp
-                                @foreach($soluzione as $desc_soluzione)
-                            <br><h5 style="padding-left: 30px"><b>{{ $desc_soluzione->descrizione_soluzione}}</b></h5>
-                                @endforeach
-                        @endfor
+                    <h3>Malfunzionamenti</h3>
+                        @foreach($malfunzionamenti as $malfunzionamento)
+                    <br><h5 style="padding-left: 10px"><b>{{ $malfunzionamento->descrizione_malfunzionamento }}</b></h5>
+                    <a href=" {{ route('solutionDetails', [$malfunzionamento->malfunction_id]) }}"><h6 style="padding-left: 10px">Soluzioni</h6></a>
+                        @endforeach
             </div>
         @endauth
     </div>

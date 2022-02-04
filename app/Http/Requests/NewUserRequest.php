@@ -30,6 +30,8 @@ class NewUserRequest extends FormRequest {
             'nome' => 'required',
             'cognome'=> 'required',
             'email' => 'required',
+            'n_tel' => 'max:10',
+
         ];
     }
 }

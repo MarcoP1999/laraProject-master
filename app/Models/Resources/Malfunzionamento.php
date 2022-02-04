@@ -8,6 +8,6 @@ class Malfunzionamento extends Model
 {
     protected $table = 'malfunctions';
     protected $primaryKey = 'malfunction_id';
-    protected $fillable = [ 'descrizione_malfunzionamento' ];
+    protected $fillable = ['descrizione_malfunzionamento','id_prodotto'];
     public $timestamps = false;
 }

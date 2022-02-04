@@ -15,6 +15,15 @@
                <form class="form_style" action="{{route('modifyDataStaff', [$dati_staff->id])}}" method="post">
                    @csrf
                    <fieldset>
+                       <label for="n_tel"><h6>Numero di Telefono</h6></label>
+                       <input type="n_tel" id="n_tel" name="n_tel" class="search-input" value="{{$dati_staff->n_tel}}" required>
+                       <br><br>
+                       @error('n_tel')
+                       <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                       <br>
+                       @enderror
                        <label for="password"><h6>Nuova password</h6></label>
                        <input type="password" minlength="8" id="password" name="password" class="search-input" value="">
                        <br>
@@ -35,6 +44,7 @@
                        @enderror
                        <label for="email"><h6>E-Mail</h6></label>
                        <input type="email" id="email" name="email" class="search-input" value="{{$dati_staff->email}}" required>
+
                    </fieldset>
                    <input type="submit" class="form_btn" value="Modifica">
                </form>

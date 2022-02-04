@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('surname')->nullable();
             $table->string('piva')->nullable();
+            $table->integer('n_tel')->nullable();
 
             //$table->rememberToken();
             //$table->timestamps();

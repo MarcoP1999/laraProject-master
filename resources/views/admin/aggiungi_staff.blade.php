@@ -53,6 +53,8 @@
                     <br><br>
                     <label for="email"><h6>E-mail</h6></label>
                     <input type="email" id="email" name="email" class="search-input" value="{{ old('email') }}" required>
+                    <label for="n_tel"><h6>Numero di Telefono</h6></label>
+                    <input type="number" id="n_tel" name="n_tel" class="search-input" value="{{ old('n_tel') }}" required>
                 </fieldset>
                 <input type="submit" class="form_btn" value="Crea">
             </form>

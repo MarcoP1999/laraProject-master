@@ -15,8 +15,14 @@
             <form class="form_style" action="{{route('modifyDataTecn', [$dati_tecnico->id])}}" method="post">
                 @csrf
                 <fieldset>
+                    <label for="n_tel"><h6>Numero di Telefono</h6></label>
+                    <input type="n_tel" id="n_tel" name="n_tel" class="search-input" value="{{$dati_tecnico->n_tel}}"required>
+                    <br><br>
+                    <label for="piva"><h6>Partita Iva</h6></label>
+                    <input type="piva" id="piva" name="p_iva" class="search-input" value="{{$dati_tecnico->piva}}" >
+                    <br><br>
                     <label for="password"><h6>Nuova password</h6></label>
-                    <input type="password" minlength="8" id="password" name="password" class="search-input" value="">
+                    <input type="password" minlength="8" id="password" name="password" class="search-input" value=""required>
                     <br>
                     @error('password')
                     <span class="invalid-feedback" role="alert">

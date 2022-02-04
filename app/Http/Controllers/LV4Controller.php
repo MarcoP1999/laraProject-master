@@ -141,6 +141,16 @@ class LV4Controller extends Controller
         return redirect()->route('showStaff');
     }
 
+    public function showGestioneProd4()
+    {
+        $_PublicModel=new PublicModel;
+        $prodotti = $this->_PublicModel->getProducts();
+
+
+        return view('admin.gestione_prodotti4')
+            ->with('prodotti', $prodotti);
+    }
+
     public function showGestione4($id_prodotto) {
 
         $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
@@ -150,8 +160,14 @@ class LV4Controller extends Controller
 
 
         return view('admin.gestione4_malf_sol')
+            ->with('id_prodotto', $id_prodotto)
             ->with('malfunzionamenti', $malfunzionamenti)
             ->with('soluzioni', $soluzioni);
+    }
+
+    public function addNewMalf4 () {
+        $this->_AdminModel->addMalf4($_POST['descrizione_malfunzionamento'],$_POST['id_prodotto']);
+        return redirect()->route('admin.gestione4_malf_sol');
     }
 
     public function showFaqAdmin () {
