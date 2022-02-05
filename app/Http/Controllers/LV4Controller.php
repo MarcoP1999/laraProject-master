@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FilterRequest;
 use App\Http\Requests\NewProductRequest;
+use App\Http\Requests\FaqRequest;
+use App\Http\Requests\NewMalfunctionRequest;
+use App\Http\Requests\NewSolutionRequest;
 use App\Http\Requests\NewUserRequest;
 use App\Http\Requests\ModifyUserRequest;
 use App\Models\PublicModel;
@@ -154,21 +157,53 @@ class LV4Controller extends Controller
     public function showGestione4($id_prodotto) {
 
         $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
-        foreach ($malfunzionamenti as $malfunzionamento) {
-            $soluzioni[$malfunzionamento->malfunction_id]=$this->_PublicModel->getSolutionsDetails($malfunzionamento->malfunction_id);
-        };
 
 
-        return view('admin.gestione4_malf_sol')
+        return view('admin.gestione4_malf')
             ->with('id_prodotto', $id_prodotto)
-            ->with('malfunzionamenti', $malfunzionamenti)
-            ->with('soluzioni', $soluzioni);
+            ->with('malfunzionamenti', $malfunzionamenti);
     }
 
-    public function addNewMalf4 () {
-        $this->_AdminModel->addMalf4($_POST['descrizione_malfunzionamento'],$_POST['id_prodotto']);
-        return redirect()->route('admin.gestione4_malf_sol');
+    public function addMalf4($id_prodotto) {
+        return view('admin.nuovo_malf4')
+        ->with('id_prodotto', $id_prodotto);
     }
+
+    public function addNewMalf4 (NewMalfunctionRequest $request) {
+        $this->_AdminModel->addMalf4($request);
+        $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($request->id_prodotto);
+
+
+        return view('admin.gestione4_malf')
+            ->with('id_prodotto', $request->id_prodotto)
+            ->with('malfunzionamenti', $malfunzionamenti);
+    }
+
+    public function showMalfModify4($id_malfunzionamento){
+        $_AdminModel=new AdminModel;
+        $dati_malf= $_AdminModel->getMalfData4($id_malfunzionamento);
+        return view('admin.modifica_malf4')
+            ->with('dati_malf', $dati_malf[0]);
+    }
+
+    public function modifyDataMalf4 (NewMalfunctionRequest $request, $id_malfunzionamento){
+
+
+        $id_prodotto=$this->_AdminModel->setMalfData4($request, $id_malfunzionamento);
+        $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
+        return view('admin.gestione4_malf')
+            ->with('id_prodotto', $id_prodotto)
+            ->with('malfunzionamenti', $malfunzionamenti);
+    }
+
+    public function deleteMalf4 ($id_malfunzionamento){
+        $id_prodotto=$this->_AdminModel->deleteMalf4( $id_malfunzionamento);
+        $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
+        return view('admin.gestione4_malf')
+            ->with('id_prodotto', $id_prodotto)
+            ->with('malfunzionamenti', $malfunzionamenti);
+    }
+
 
     public function showFaqAdmin () {
         $_AdminModel=new AdminModel;
@@ -178,8 +213,8 @@ class LV4Controller extends Controller
             ->with('faq', $faq);
     }
 
-    public function addNewFaq () {
-        $this->_AdminModel->addFaq($_POST);
+    public function addNewFaq (FaqRequest $request) {
+        $this->_AdminModel->addFaq($request);
         return redirect()->route('showFaqAdmin');
     }
 
@@ -191,9 +226,9 @@ class LV4Controller extends Controller
             ->with('dati_faq', $dati_faq[0]);
     }
 
-    public function modifyDataFaq ($id){
+    public function modifyDataFaq (FaqRequest $request, $id){
 
-        $this->_AdminModel->setFaqData($_POST, $id);
+        $this->_AdminModel->setFaqData($request, $id);
         return redirect()->route('showFaqAdmin');
     }
 

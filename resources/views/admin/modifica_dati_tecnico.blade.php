@@ -10,6 +10,12 @@
 
 @section('content')
     <div id="container2">
+        <script>
+            var msg = '{{Session::get('alert')}}';
+            var exist = '{{Session::has('alert')}}';
+            if(exist){
+                alert(msg);
+                </script>
         <div class="form_dati">
             <h3>Modifica dati di un tecnico accreditato</h3>
             <form class="form_style" action="{{route('modifyDataTecn', [$dati_tecnico->id])}}" method="post">
@@ -18,11 +24,23 @@
                     <label for="n_tel"><h6>Numero di Telefono</h6></label>
                     <input type="n_tel" id="n_tel" name="n_tel" class="search-input" value="{{$dati_tecnico->n_tel}}"required>
                     <br><br>
+                    @error('n_tel')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    <br>
+                    @enderror
                     <label for="piva"><h6>Partita Iva</h6></label>
-                    <input type="piva" id="piva" name="p_iva" class="search-input" value="{{$dati_tecnico->piva}}" >
+                    <input type="piva" id="piva" name="piva" class="search-input" value="{{$dati_tecnico->piva}}" required>
                     <br><br>
+                    @error('piva')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    <br>
+                    @enderror
                     <label for="password"><h6>Nuova password</h6></label>
-                    <input type="password" minlength="8" id="password" name="password" class="search-input" value=""required>
+                    <input type="password" minlength="8" id="password" name="password" class="search-input" value="">
                     <br>
                     @error('password')
                     <span class="invalid-feedback" role="alert">

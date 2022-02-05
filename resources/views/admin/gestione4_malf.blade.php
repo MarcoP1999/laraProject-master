@@ -31,7 +31,7 @@
                 <h3>Lista FAQ</h3>
                 <div class="bottone_admin">
                     <div class="bottone_prodotto">
-                        <a href="{{route ('addMalf4',$id_prodotto)}}"><button type="button" name="button" class="lgn_btn">Aggiungi Malfunzionamento</button></a>
+                        <a href="{{route ('addMalf4',[$id_prodotto])}}"><button type="button" name="button" class="lgn_btn">Aggiungi Malfunzionamento</button></a>
                     </div>
                 </div>
             </div>
@@ -43,19 +43,18 @@
                         <h3>Malfunzionamento</h3>
                         <div class="optionsUp">
                             <h5>
-                                <a style="color: #225bda" href="{{route ('modifyFaq', [$malfunzionamento->malfunction_id]) }}">Modifica</a><br>
-                                <a style="color: #17b483" href="{{route ('addFaq')}}">Aggiungi Soluzione</a><br>
-                                <a href="{{route ('deleteFaq', [$malfunzionamento->malfunction_id])}}" onclick="return confirm('Sei sicuro di voler eliminare l\'elemento selezionato?')">Elimina</a>
+                                <a style="color: #225bda" href="{{route ('modifyMalf4', [$malfunzionamento->malfunction_id]) }}">Modifica</a><br>
+                                <a style="color: #17b483" href="{{route ('addFaq')}}">Soluzioni</a><br>
+                                <a href="{{route ('deleteMalf4', [$malfunzionamento->malfunction_id])}}" onclick="return confirm('Sei sicuro di voler eliminare l\'elemento selezionato?')">Elimina</a>
                             </h5>
                         </div>
                         <div class="faqAdmin">
-                                <br><h5 ><b>{{ $malfunzionamento->descrizione_malfunzionamento }}</b></h5>
+                                <br><h5><b>{{ $malfunzionamento->descrizione_malfunzionamento }}</b></h5>
                             </div>
                                 @endforeach
                         </li>
-            </ul>
                         </div>
-
-
+                    </li>
+            </ul>
         </div>
 @endsection

@@ -25,9 +25,9 @@ class ModifyUserRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'password' => ['nullable','min:8'],
+            'password' => ['nullable','min:8', 'required_with:password_confirm', 'same:password_confirm'],
             'email' => ['required'],
-            'n_tel' => 'max:10',
-        ];
+            'n_tel' =>'numeric',
+            'piva' => ['required'],];
     }
 }

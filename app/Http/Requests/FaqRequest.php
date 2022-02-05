@@ -1,11 +1,12 @@
 <?php
 
+
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class NewUserRequest extends FormRequest {
+use Illuminate\Foundation\Http\FormRequest;
+
+class FaqRequest extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -25,14 +26,9 @@ class NewUserRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'username' => 'required|max:25|unique:users|string',
-            'password' => ['nullable','min:8', 'required_with:password_confirm', 'same:password_confirm'],
-            'name' => 'required|string',
-            'surname'=> 'required|string',
-            'email' => 'required',
-            'n_tel' => 'numeric',
-            'piva' => ['required'],
-
-        ];
+            'domanda' => ['required','max:3000', 'string'],
+            'risposta' => ['required','max:3000', 'string'],
+            ];
     }
 }
+

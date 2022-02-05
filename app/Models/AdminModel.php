@@ -76,13 +76,31 @@ class AdminModel extends Model
         };
     }
 
-    public function addMalf4($desc_malf,$id_prodotto) {
+    public function addMalf4( $request) {
         //dd($request);
         $malfunzionamento = new Malfunzionamento;
-
-        $malfunzionamento->descrizione_malfunzionamento=$desc_malf;
-        $malfunzionamento->id_prodotto=$id_prodotto;
+        $malfunzionamento->id_prodotto=$request->id_prodotto;
+        $malfunzionamento->descrizione_malfunzionamento=$request->descrizione_malfunzionamento;
         $malfunzionamento->save();
+    }
+
+    public function getMalfData4($id_malfunzionamento) {
+        return Malfunzionamento::where('malfunction_id', $id_malfunzionamento)->get();
+    }
+
+    public function setMalfData4 ($request, $id_malfunzionamento){
+        $allMalfunctions = Malfunzionamento::where('malfunction_id', $id_malfunzionamento)->get();
+        $malfunction = $allMalfunctions[0];
+        $malfunction->descrizione_malfunzionamento= $request->descrizione_malfunzionamento;
+        $malfunction->save();
+        return $malfunction->id_prodotto;
+    }
+
+    public function deleteMalf4($id_malfunzionamento) {
+        $malfunction = Malfunzionamento::find($id_malfunzionamento);
+        $id_prodotto=$malfunction->id_prodotto;
+        $malfunction->delete();
+        return $id_prodotto;
     }
 
     public function getTecn(){
@@ -118,6 +136,7 @@ class AdminModel extends Model
         $utenti = Utente::where('id', $id)->get();
         $staff = $utenti[0];
         $staff->n_tel=$request['n_tel'];
+        $staff->piva=$request['piva'];
         $staff->email= $request['email'];
         if($request['password'] != '') $staff->password= Hash::make($request['password']);
         $staff->save();
@@ -127,6 +146,7 @@ class AdminModel extends Model
         $utenti = Utente::where('id',$id)->get();
         $tecnici = $utenti[0];
         $tecnici->n_tel=$request['n_tel'];
+        $tecnici->piva=$request['piva'];
         $tecnici->email= $request['email'];
         if($request['password'] != '') $tecnici->password= Hash::make($request['password']);
         $tecnici->save();
@@ -136,6 +156,7 @@ class AdminModel extends Model
         $tecnico = new Utente;
         $tecnico->fill($request->all());
         $tecnico->livello_utenza = '2';
+        $tecnico->password= Hash::make($request['password']);
         $tecnico->save();
     }
 
@@ -143,6 +164,7 @@ class AdminModel extends Model
         $staff = new Utente;
         $staff->fill($request->all());
         $staff->livello_utenza = '3';
+        $staff->password= Hash::make($request['password']);
         $staff->save();
     }
 
@@ -150,11 +172,11 @@ class AdminModel extends Model
         return FAQ::all();
     }
 
-    public function addFaq ($post) {
+    public function addFaq ($request) {
         //dd($request);
         $faq = new FAQ;
-        $faq->domanda = $post['domanda'];
-        $faq->risposta = $post['risposta'];
+        $faq->domanda = $request->domanda;
+        $faq->risposta = $request->risposta;
         $faq->save();
     }
 
@@ -162,11 +184,11 @@ class AdminModel extends Model
         return FAQ::where('id', $id)->get();
     }
 
-    public function setFaqData ($post, $id){
+    public function setFaqData ($request, $id){
         $allFaq = FAQ::where('id', $id)->get();
         $faq = $allFaq[0];
-        $faq->domanda= $post['domanda'];
-        $faq->risposta= $post['risposta'];
+        $faq->domanda= $request->domanda;
+        $faq->risposta= $request->risposta;
         $faq->save();
     }
 

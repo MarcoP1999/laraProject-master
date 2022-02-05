@@ -26,20 +26,20 @@ class PublicModel
         return $prodotti;
     }
 
-    public function getSolutionsDetails($id_malfunzionamento) {
-
-        $soluzioni = Malfunzionamento::join('solutions', 'malfunctions.malfunction_id', 'solutions.id_malfunzionamento')
-            ->where('malfunctions.malfunction_id',$id_malfunzionamento)
-            ->get();
-        return $soluzioni;
-    }
-
     public function getMalfunctionDetails($id_prodotto) {
 
         $malfunzionamenti = Prodotto::join('malfunctions', 'products.product_id', 'malfunctions.id_prodotto')
             ->where('products.product_id',$id_prodotto)
             ->get();
         return $malfunzionamenti;
+    }
+
+    public function getSolutionsDetails($id_malfunzionamento) {
+
+        $soluzioni = Malfunzionamento::join('solutions', 'malfunctions.malfunction_id', 'solutions.id_malfunzionamento')
+            ->where('malfunctions.malfunction_id',$id_malfunzionamento)
+            ->get();
+        return $soluzioni;
     }
 
     public function getFilteredProducts( $request) {

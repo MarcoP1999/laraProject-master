@@ -15,8 +15,7 @@
                 <fieldset>
                     <label for="descrizione_malfunzionamento"><h6>Descrizione</h6></label>
                     <textarea name="descrizione_malfunzionamento" style="width:1126px;height:20px;" value="" required></textarea>
-
-                    <input type="hidden" name="product_id" value="{{$id_prodotto}}" required>
+                    <input type="hidden" name="id_prodotto" value="{{$id_prodotto}}" required>
                 </fieldset>
                 <input type="submit" class="form_btn" value="Aggiungi">
             </form>

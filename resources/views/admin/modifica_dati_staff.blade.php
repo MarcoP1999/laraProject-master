@@ -24,6 +24,15 @@
                                     </span>
                        <br>
                        @enderror
+                       <label for="piva"><h6>Partita Iva</h6></label>
+                       <input type="piva" id="piva" name="p_iva" class="search-input" value="{{$dati_staff->piva}}" required>
+                       <br><br>
+                       @error('piva')
+                       <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                       <br>
+                       @enderror
                        <label for="password"><h6>Nuova password</h6></label>
                        <input type="password" minlength="8" id="password" name="password" class="search-input" value="">
                        <br>
