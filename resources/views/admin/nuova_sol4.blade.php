@@ -13,8 +13,14 @@
             <form method="POST" action="{{ route('addNewSol4') }}">
                 @csrf
                 <fieldset>
-                    <label for="descrizione"><h6>Descrizione</h6></label>
-                    <textarea name="descrizione" style="width:1126px;height:20px;" value="" required></textarea>
+                    <label for="descrizione_soluzione"><h6>Descrizione</h6></label>
+                    <textarea name="descrizione_soluzione" style="width:1126px;height:20px;" value="" required></textarea>
+                    <input type="hidden" name="id_malfunzionamento" value="{{$id_malfunzionamento}}" required>
+                    @error('descrizione_soluzione')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                 </fieldset>
                 <input type="submit" class="form_btn" value="Aggiungi">
             </form>

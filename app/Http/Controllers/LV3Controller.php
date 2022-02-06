@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NewMalfunctionRequest;
 use App\Http\Requests\NewProductRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -36,16 +37,55 @@ class LV3Controller extends Controller
           ->with('prodotti', $prodotti);
   }
 
-    public function showGestione3($product_id) {
+    public function showGestione3($id_prodotto) {
 
-        $info= $this->_PublicModel->getProductDetails($product_id);
-        $malfunzionamenti=[];
-        for( $i=0;$i<sizeof($info);$i++){
-            array_push($malfunzionamenti,$info[$i]->descrizione_malfunzionamenti);
-        }
+        $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
 
-        return view('staff.gestione3_malf_sol')
-            ->with('info', $malfunzionamenti);
+
+        return view('staff.gestione3_malf')
+            ->with('id_prodotto', $id_prodotto)
+            ->with('malfunzionamenti', $malfunzionamenti);
     }
+
+    public function addMalf3($id_prodotto) {
+        return view('staff.nuovo_malf3')
+            ->with('id_prodotto', $id_prodotto);
+    }
+
+    public function addNewMalf3 (NewMalfunctionRequest $request) {
+        $this->_PublicModel->addMalf($request);
+        $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($request->id_prodotto);
+
+
+        return view('staff.gestione3_malf')
+            ->with('id_prodotto', $request->id_prodotto)
+            ->with('malfunzionamenti', $malfunzionamenti);
+    }
+
+    public function showMalfModify3($id_malfunzionamento){
+        $_PublicModel=new PublicModel;
+        $dati_malf= $_PublicModel->getMalfData($id_malfunzionamento);
+        return view('staff.modifica_malf3')
+            ->with('dati_malf', $dati_malf[0]);
+    }
+
+    public function modifyDataMalf3 (NewMalfunctionRequest $request, $id_malfunzionamento){
+
+
+        $id_prodotto=$this->_PublicModel->setMalfData($request, $id_malfunzionamento);
+        $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
+        return view('staff.gestione3_malf')
+            ->with('id_prodotto', $id_prodotto)
+            ->with('malfunzionamenti', $malfunzionamenti);
+    }
+
+    public function deleteMalf3($id_malfunzionamento){
+        $id_prodotto=$this->_PublicModel->deleteMalf( $id_malfunzionamento);
+        $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
+        return view('staff.gestione3_malf')
+            ->with('id_prodotto', $id_prodotto)
+            ->with('malfunzionamenti', $malfunzionamenti);
+    }
+
 
 }

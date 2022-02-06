@@ -9,6 +9,6 @@ class Soluzione extends Model
 {
     protected $table = 'solutions';
     protected $primaryKey = 'solution_id';
-    protected $fillable = [ 'descrizione_soluzione' ];
+    protected $fillable = [ 'descrizione_soluzione', 'id_malfunzionamento' ];
     public $timestamps = false;
 }

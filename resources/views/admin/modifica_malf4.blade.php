@@ -17,6 +17,11 @@
                 <fieldset>
                     <label for="descrizione_malfunzionamento"><h6>Descrizione</h6></label>
                     <textarea name="descrizione_malfunzionamento" style="width:1126px;height:20px;" required>{{$dati_malf->descrizione_malfunzionamento}}</textarea>
+                    @error('descrizione_malfunzionamento')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                 </fieldset>
                 <input type="submit" class="form_btn" value="Modifica">
             </form>

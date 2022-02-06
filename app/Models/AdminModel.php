@@ -76,32 +76,6 @@ class AdminModel extends Model
         };
     }
 
-    public function addMalf4( $request) {
-        //dd($request);
-        $malfunzionamento = new Malfunzionamento;
-        $malfunzionamento->id_prodotto=$request->id_prodotto;
-        $malfunzionamento->descrizione_malfunzionamento=$request->descrizione_malfunzionamento;
-        $malfunzionamento->save();
-    }
-
-    public function getMalfData4($id_malfunzionamento) {
-        return Malfunzionamento::where('malfunction_id', $id_malfunzionamento)->get();
-    }
-
-    public function setMalfData4 ($request, $id_malfunzionamento){
-        $allMalfunctions = Malfunzionamento::where('malfunction_id', $id_malfunzionamento)->get();
-        $malfunction = $allMalfunctions[0];
-        $malfunction->descrizione_malfunzionamento= $request->descrizione_malfunzionamento;
-        $malfunction->save();
-        return $malfunction->id_prodotto;
-    }
-
-    public function deleteMalf4($id_malfunzionamento) {
-        $malfunction = Malfunzionamento::find($id_malfunzionamento);
-        $id_prodotto=$malfunction->id_prodotto;
-        $malfunction->delete();
-        return $id_prodotto;
-    }
 
     public function getTecn(){
         return Utente::where('livello_utenza', 2) -> orderBy('username') -> paginate(5);

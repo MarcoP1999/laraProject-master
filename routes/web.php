@@ -27,11 +27,16 @@ Route::view('/contatti', 'contatti') -> name('contatti');
 
 Route::get('/staff/gestione3/{product_id}', 'Lv3Controller@showGestione3') -> name('gestione3')->middleware('can:isStaff');
 
-Route::get('/admin/gestione_prod4', 'Lv4Controller@showGestioneProd4') -> name('gestione_prod4')->middleware('can:isAdmin');
-Route::get('/admin/gestione4/{product_id}', 'Lv4Controller@showGestione4') -> name('gestione4')->middleware('can:isAdmin');
-
 // Rotta area staff
 Route::get('/staff', 'LV3Controller@showAreaStaff') -> name('staff_area')->middleware('can:isStaff');
+Route::get('/admin/gestionemalf3/{product_id}', 'Lv3Controller@showGestione3') -> name('gestione3')->middleware('can:isStaff');
+Route::get('/staff/gestionemalf3/nuovo_malf3/{id_prodotto}', 'LV3Controller@addMalf3') -> name('addMalf3') -> middleware('can:isStaff');
+Route::post('/staff/gestionemalf3/nuovo_malf3', 'LV3Controller@addNewMalf3') -> name('addNewMalf3') -> middleware('can:isStaff');
+
+Route::get('/admin/gestionemalf4/mod_malf3/{id_malfunzionamento}', 'LV3Controller@showMalfModify3') -> name('modifyMalf3') -> middleware('can:isStaff');
+Route::post('/admin/gestionemalf4/mod_malf3/{id_malfunzionamento}', 'LV3Controller@modifyDataMalf3') -> name('modifyDataMalf3') -> middleware('can:isStaff');
+
+Route::get('/staff/gestionemalf3/{id_malfunzionamento}', 'LV3Controller@deleteMalf3') -> name('deleteMalf3') -> middleware('can:isStaff');
 
 // Rotta per scheda prodotto
 Route::get('/prodotto/{id_prodotto}', 'PublicController@productDetails') -> name('productDetails');
@@ -62,13 +67,25 @@ Route::post('/admin/modificaprodotto', 'LV4Controller@modificaProdotto') -> name
 
 Route::get('/admin/cancellaprodotto/{id}', 'LV4Controller@cancellaProdotto') -> name('cancellaProdotto')->middleware('can:isAdmin');
 
+Route::get('/admin/gestione_prod4', 'Lv4Controller@showGestioneProd4') -> name('gestione_prod4')->middleware('can:isAdmin');
+Route::get('/admin/gestione_prod4/gestione4/{product_id}', 'Lv4Controller@showGestione4') -> name('gestione4')->middleware('can:isAdmin');
+Route::get('/admin/gestione_prod4/gestione4/gestmalf4/{malfunction_id}', 'Lv4Controller@showGestSol4') -> name('gestSol4')->middleware('can:isAdmin');
+
 Route::get('/admin/gestioneprodotti4/gestionemalf4/nuovo_malf4/{id_prodotto}', 'LV4Controller@addMalf4') -> name('addMalf4') -> middleware('can:isAdmin');
 Route::post('/admin/gestioneprodotti4/gestionemalf4/nuovo_malf4', 'LV4Controller@addNewMalf4') -> name('addNewMalf4') -> middleware('can:isAdmin');
+
+Route::get('/admin/gestioneprodotti4/gestionemalf4/gestionesol4/nuova_sol4/{id_malfunzionamento}', 'LV4Controller@addSol4') -> name('addSol4') -> middleware('can:isAdmin');
+Route::post('/admin/gestioneprodotti4/gestionemalf4/gestionesol4/nuova_sol4', 'LV4Controller@addNewSol4') -> name('addNewSol4') -> middleware('can:isAdmin');
 
 Route::get('/admin/gestioneprodotti4/gestionemalf4/mod_malf4/{id_malfunzionamento}', 'LV4Controller@showMalfModify4') -> name('modifyMalf4') -> middleware('can:isAdmin');
 Route::post('/admin/gestioneprodotti4/gestionemalf4/mod_malf4/{id_malfunzionamento}', 'LV4Controller@modifyDataMalf4') -> name('modifyDataMalf4') -> middleware('can:isAdmin');
 
+Route::get('/admin/gestioneprodotti4/gestionemalf4/gestionesol4/mod_sol4/{id_soluzione}', 'LV4Controller@showSolModify4') -> name('modifySol4') -> middleware('can:isAdmin');
+Route::post('/admin/gestioneprodotti4/gestionemalf4/gestionesol4/mod_sol4/{id_soluzione}', 'LV4Controller@modifyDataSol4') -> name('modifyDataSol4') -> middleware('can:isAdmin');
+
 Route::get('/admin/gestioneprodotti4/gestionemalf4/{id_malfunzionamento}', 'LV4Controller@deleteMalf4') -> name('deleteMalf4') -> middleware('can:isAdmin');
+
+Route::get('/admin/gestioneprodotti4/gestionemalf4/gestionesol4/{id_soluzione}', 'LV4Controller@deleteSol4') -> name('deleteSol4') -> middleware('can:isAdmin');
 
 Route::get('/admin/tecnici', 'LV4Controller@showTecn') -> name('showTecn') -> middleware('can:isAdmin');
 

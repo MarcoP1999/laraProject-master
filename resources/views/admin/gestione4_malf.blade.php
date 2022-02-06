@@ -1,13 +1,13 @@
 @extends('layouts.struttura')
 
-@section('title', 'Admin')
+@section('title', 'Gestione Malfunzionamenti Admin')
 
 @section('breadcrumb')
     <li><a href="{{ route('admin') }}">Admin</a></li>
 @endsection
 
 @section('content')
-    <div id="container2" style=" height: 500px">
+    <div id="container2">
         <div class="catalog" style="height: 500px">
             <aside id="sidebar">
                 <div style="margin-left: 20px">
@@ -28,7 +28,7 @@
         </div>
         <div class="page" style="height: 500px; overflow: scroll">
             <div class="header_org">
-                <h3>Lista FAQ</h3>
+                <h3>Lista Malfunzionamenti</h3>
                 <div class="bottone_admin">
                     <div class="bottone_prodotto">
                         <a href="{{route ('addMalf4',[$id_prodotto])}}"><button type="button" name="button" class="lgn_btn">Aggiungi Malfunzionamento</button></a>
@@ -44,7 +44,7 @@
                         <div class="optionsUp">
                             <h5>
                                 <a style="color: #225bda" href="{{route ('modifyMalf4', [$malfunzionamento->malfunction_id]) }}">Modifica</a><br>
-                                <a style="color: #17b483" href="{{route ('addFaq')}}">Soluzioni</a><br>
+                                <a style="color: #17b483" href="{{route ('gestSol4',[$malfunzionamento->malfunction_id])}}">Soluzioni</a><br>
                                 <a href="{{route ('deleteMalf4', [$malfunzionamento->malfunction_id])}}" onclick="return confirm('Sei sicuro di voler eliminare l\'elemento selezionato?')">Elimina</a>
                             </h5>
                         </div>

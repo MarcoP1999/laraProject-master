@@ -6,7 +6,6 @@
     <li><a href="{{ route('admin') }}">Admin</a></li>
 @endsection
 
-
 @section('content')
     <div id="container2">
         <div class="catalog" style="height: 500px">

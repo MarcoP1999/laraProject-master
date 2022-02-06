@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Resources\Eventi;
+use App\Models\Resources\Malfunzionamento;
 use App\Models\Resources\Partecipazione;
 use App\Models\Resources\Utente;
 use App\Models\Resources\Biglietto;

@@ -164,13 +164,23 @@ class LV4Controller extends Controller
             ->with('malfunzionamenti', $malfunzionamenti);
     }
 
+    public function showGestSol4($id_malfunzionamento) {
+
+        $soluzioni = $this->_PublicModel->getSolutionsDetails($id_malfunzionamento);
+
+
+        return view('admin.gestione4_sol')
+            ->with('id_malfunzionamento', $id_malfunzionamento)
+            ->with('soluzioni', $soluzioni);
+    }
+
     public function addMalf4($id_prodotto) {
         return view('admin.nuovo_malf4')
         ->with('id_prodotto', $id_prodotto);
     }
 
     public function addNewMalf4 (NewMalfunctionRequest $request) {
-        $this->_AdminModel->addMalf4($request);
+        $this->_PublicModel->addMalf($request);
         $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($request->id_prodotto);
 
 
@@ -179,9 +189,24 @@ class LV4Controller extends Controller
             ->with('malfunzionamenti', $malfunzionamenti);
     }
 
+    public function addSol4($id_malfunzionamento) {
+        return view('admin.nuova_sol4')
+            ->with('id_malfunzionamento', $id_malfunzionamento);
+    }
+
+    public function addNewSol4 (NewSolutionRequest $request) {
+        $this->_PublicModel->addSol($request);
+        $soluzioni = $this->_PublicModel->getSolutionsDetails($request->id_malfunzionamento);
+
+
+        return view('admin.gestione4_sol')
+            ->with('id_malfunzionamento', $request->id_malfunzionamento)
+            ->with('soluzioni', $soluzioni);
+    }
+
     public function showMalfModify4($id_malfunzionamento){
-        $_AdminModel=new AdminModel;
-        $dati_malf= $_AdminModel->getMalfData4($id_malfunzionamento);
+        $_PublicModel=new PublicModel;
+        $dati_malf= $_PublicModel->getMalfData($id_malfunzionamento);
         return view('admin.modifica_malf4')
             ->with('dati_malf', $dati_malf[0]);
     }
@@ -189,19 +214,44 @@ class LV4Controller extends Controller
     public function modifyDataMalf4 (NewMalfunctionRequest $request, $id_malfunzionamento){
 
 
-        $id_prodotto=$this->_AdminModel->setMalfData4($request, $id_malfunzionamento);
+        $id_prodotto=$this->_PublicModel->setMalfData($request, $id_malfunzionamento);
         $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
         return view('admin.gestione4_malf')
             ->with('id_prodotto', $id_prodotto)
             ->with('malfunzionamenti', $malfunzionamenti);
     }
 
+    public function showSolModify4($id_soluzione){
+        $_PublicModel=new PublicModel;
+        $dati_sol= $_PublicModel->getSolData($id_soluzione);
+        return view('admin.modifica_sol4')
+            ->with('dati_sol', $dati_sol[0]);
+    }
+
+    public function modifyDataSol4 (NewSolutionRequest $request, $id_soluzione){
+
+
+        $id_malfunzionamento=$this->_PublicModel->setSolData($request, $id_soluzione);
+        $soluzioni = $this->_PublicModel->getSolutionsDetails($id_malfunzionamento);
+        return view('admin.gestione4_sol')
+            ->with('id_malfunzionamento', $id_malfunzionamento)
+            ->with('soluzioni', $soluzioni);
+    }
+
     public function deleteMalf4 ($id_malfunzionamento){
-        $id_prodotto=$this->_AdminModel->deleteMalf4( $id_malfunzionamento);
+        $id_prodotto=$this->_PublicModel->deleteMalf( $id_malfunzionamento);
         $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
         return view('admin.gestione4_malf')
             ->with('id_prodotto', $id_prodotto)
             ->with('malfunzionamenti', $malfunzionamenti);
+    }
+
+    public function deleteSol4 ($id_soluzione){
+        $id_malfunzionamento=$this->_PublicModel->deleteSol( $id_soluzione);
+        $soluzioni = $this->_PublicModel->getSolutionsDetails($id_malfunzionamento);
+        return view('admin.gestione4_sol')
+            ->with('id_malfunzionamento', $id_malfunzionamento)
+            ->with('soluzioni', $soluzioni);
     }
 
 
