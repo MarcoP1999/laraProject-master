@@ -1,6 +1,6 @@
 @extends('layouts.struttura')
 
-@section('title', 'Prodotto')
+@section('title', 'Soluzioni')
 
 @section('breadcrumb')
     <li><a href="{{ route('showCatalog') }}">Catalogo</a></li>

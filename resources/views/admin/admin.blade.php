@@ -18,7 +18,7 @@
                 @endif
                 <div class="bottone_admin">
                     <div class="bottone_prodotto" style="margin-right: 10px">
-                        <a href="{{route ('nuovoProdotto')}}"><button type="button" name="button" class="lgn_btn">Crea nuovo Prodotto</button></a>
+                        <a href="{{route ('assStaff')}}"><button type="button" name="button" class="lgn_btn">Crea nuovo Prodotto</button></a>
                     </div>
                 </div>
             </div>

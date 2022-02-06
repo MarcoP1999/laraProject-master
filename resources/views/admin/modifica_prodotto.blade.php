@@ -1,6 +1,6 @@
 @extends('layouts.struttura')
 
-@section('title', 'Modifica prodotto')
+@section('title', 'Modifica Prodotto')
 
 @section('breadcrumb')
     <li><a href="{{ route('admin') }}">Area Admin</a></li>
@@ -43,7 +43,7 @@
                     @enderror
                     <br><br>
                     <label for="note_buon_uso"><h6>Note di Buon Uso</h6></label>
-                    <textarea style="width:990px;height:120px;" type="text" id="norme_buon_uso" name="norme_buon_uso">{{$dati->note_buon_uso}} </textarea>
+                    <textarea style="width:990px;height:120px;" type="text" id="note_buon_uso" name="note_buon_uso">{{$dati->note_buon_uso}} </textarea>
                     @error('note_buon_uso')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

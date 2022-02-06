@@ -1,6 +1,6 @@
 @extends('layouts.struttura')
 
-@section('title', 'Modifica Malfunzionamento')
+@section('title', 'Modifica Malfunzionamento Staff')
 
 @section('breadcrumb')
     <li><a href="{{ route('modifyMalf3', [$dati_malf->malfunction_id]) }}">Modifica Malfunzionamento</a></li>

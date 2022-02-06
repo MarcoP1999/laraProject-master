@@ -52,8 +52,8 @@
                         </div>
                         @endforeach
                     </li>
+            </ul>
         </div>
-        </li>
-        </ul>
+
     </div>
 @endsection

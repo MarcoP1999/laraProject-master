@@ -1,6 +1,6 @@
 @extends('layouts.struttura')
 
-@section('title', 'Gestione Malfunzionamenti Admin')
+@section('title', 'Gestione Malfunzionamento Admin')
 
 @section('breadcrumb')
     <li><a href="{{ route('admin') }}">Admin</a></li>
@@ -53,8 +53,9 @@
                             </div>
                                 @endforeach
                         </li>
-                        </div>
-                    </li>
             </ul>
+                        </div>
+
+
         </div>
 @endsection

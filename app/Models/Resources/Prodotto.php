@@ -9,7 +9,7 @@ class Prodotto extends Model
 {
     protected $table = 'products';
     protected $primaryKey = 'product_id';
-    protected $fillable = [ 'image_catalogo','note_buon_uso','descrizione','modi_installazione','nome_e_codice'];
+    protected $fillable = [ 'image_catalogo','note_buon_uso','descrizione','modi_installazione','nome_e_codice','id_utente'];
 
 
     public $timestamps = false;

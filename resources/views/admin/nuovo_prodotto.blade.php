@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
     <li><a href="{{ route('admin') }}">Area organizzatori</a></li>
-    <li><a href="{{ route('nuovoProdotto') }}">Nuovo prodotto</a></li>
+    <li><a href="{{ route('nuovoProdotto', [$id]) }}">Nuovo prodotto</a></li>
 @endsection
 
 @section('content')
@@ -57,7 +57,7 @@
                     </ul>
                 @endif
                 <br><br>
-
+                <input type="hidden" name="id_utente" value="{{$id}}" required>
                 <input class="form_btn" type="submit" value="Crea">
             </form>
 

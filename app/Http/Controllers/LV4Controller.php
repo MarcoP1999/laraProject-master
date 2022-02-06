@@ -49,6 +49,11 @@ class LV4Controller extends Controller
             ->with('prodotti', $prodotti);
 
     }
+
+    public function showCreaProdotto($id){
+        return view('admin.nuovo_prodotto')
+            ->with('id', $id);
+    }
     public function creaProdotto(NewProductRequest $request){
 
         $this->_AdminModel->setNewProductData($request);
@@ -94,6 +99,15 @@ class LV4Controller extends Controller
         $staff = $_AdminModel->getStaff();
 
         return view ('admin.gestione_staff')
+            ->with ('staff', $staff);
+    }
+
+    public function assStaff(){
+        $_AdminModel=new AdminModel;
+
+        $staff = $_AdminModel->getStaff();
+
+        return view ('admin.ass_staff')
             ->with ('staff', $staff);
     }
 

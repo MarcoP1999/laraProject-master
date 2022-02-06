@@ -135,14 +135,16 @@ class DatabaseSeeder extends Seeder
                 'modi_installazione' => 'Boh, capiamo.',
                 'nome_e_codice' => 'Lavatrice Indesit MTWA 71252 W IT',
                 'descrizione' => 'Lavatrice Indesit MTWA 71252 W IT lavatrice Caricamento frontale 7 kg 1200 Giri/min E Bianco',
-                'note_buon_uso' => 'capiamo parte seconda'],
+                'note_buon_uso' => 'capiamo parte seconda',
+                'id_utente' => '2'],
 
             ['product_id'=> '2',
                 'image_catalogo'=> NULL,
                 'modi_installazione' => 'Boh, capiamo.',
                 'nome_e_codice' => 'Lavastoviglie 1',
                 'descrizione' => 'Lavastoviglie di gran classe',
-                'note_buon_uso' => 'capiamo parte seconda'],
+                'note_buon_uso' => 'capiamo parte seconda',
+                'id_utente' => '9'],
 
         ]);
 

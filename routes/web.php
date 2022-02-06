@@ -29,14 +29,24 @@ Route::get('/staff/gestione3/{product_id}', 'Lv3Controller@showGestione3') -> na
 
 // Rotta area staff
 Route::get('/staff', 'LV3Controller@showAreaStaff') -> name('staff_area')->middleware('can:isStaff');
-Route::get('/admin/gestionemalf3/{product_id}', 'Lv3Controller@showGestione3') -> name('gestione3')->middleware('can:isStaff');
+Route::get('/staff/gestionemalf3/{product_id}', 'Lv3Controller@showGestione3') -> name('gestione3')->middleware('can:isStaff');
+Route::get('/staff/gestionemalf3/gestionesol3/{malfunction_id}', 'Lv3Controller@showGestSol3') -> name('gestSol3')->middleware('can:isStaff');
+
 Route::get('/staff/gestionemalf3/nuovo_malf3/{id_prodotto}', 'LV3Controller@addMalf3') -> name('addMalf3') -> middleware('can:isStaff');
 Route::post('/staff/gestionemalf3/nuovo_malf3', 'LV3Controller@addNewMalf3') -> name('addNewMalf3') -> middleware('can:isStaff');
 
-Route::get('/admin/gestionemalf4/mod_malf3/{id_malfunzionamento}', 'LV3Controller@showMalfModify3') -> name('modifyMalf3') -> middleware('can:isStaff');
-Route::post('/admin/gestionemalf4/mod_malf3/{id_malfunzionamento}', 'LV3Controller@modifyDataMalf3') -> name('modifyDataMalf3') -> middleware('can:isStaff');
+Route::get('/staff/gestionemalf3/gestionesol3/nuova_sol3/{id_malfunzionamento}', 'LV3Controller@addSol3') -> name('addSol3') -> middleware('can:isStaff');
+Route::post('/staff/gestionemalf3/gestionesol3/nuova_sol3', 'LV3Controller@addNewSol3') -> name('addNewSol3') -> middleware('can:isStaff');
+
+Route::get('/staff/gestionemalf3/mod_malf3/{id_malfunzionamento}', 'LV3Controller@showMalfModify3') -> name('modifyMalf3') -> middleware('can:isStaff');
+Route::post('/staff/gestionemalf3/mod_malf3/{id_malfunzionamento}', 'LV3Controller@modifyDataMalf3') -> name('modifyDataMalf3') -> middleware('can:isStaff');
+
+Route::get('/staff/gestionemalf3/gestionesol3/mod_sol3/{id_soluzione}', 'LV3Controller@showSolModify3') -> name('modifySol3') -> middleware('can:isStaff');
+Route::post('/staff/gestionemalf3/gestionesol3/mod_sol3/{id_soluzione}', 'LV3Controller@modifyDataSol3') -> name('modifyDataSol3') -> middleware('can:isStaff');
 
 Route::get('/staff/gestionemalf3/{id_malfunzionamento}', 'LV3Controller@deleteMalf3') -> name('deleteMalf3') -> middleware('can:isStaff');
+
+Route::get('/staff/gestionemalf3/gestionesol3/{id_soluzione}', 'LV3Controller@deleteSol3') -> name('deleteSol3') -> middleware('can:isStaff');
 
 // Rotta per scheda prodotto
 Route::get('/prodotto/{id_prodotto}', 'PublicController@productDetails') -> name('productDetails');
@@ -55,15 +65,17 @@ Route::post('logout', 'Auth\LoginController@logout')
 Route::get('/admin', 'LV4Controller@showAreaAdmin') -> name('admin')->middleware('can:isAdmin');
 
 // Rotta crea prodotto
-Route::view('/admin/creaprodotto', 'admin.nuovo_prodotto') -> name('nuovoProdotto')->middleware('can:isAdmin');
-Route::post('/admin/creaprodotto', 'LV4Controller@creaProdotto') -> name('creaProdotto')->middleware('can:isAdmin');
+Route::get('/admin/associastaff/creaprodotto/{id}', 'LV4Controller@showCreaProdotto') -> name('nuovoProdotto')->middleware('can:isAdmin');
+Route::post('/admin/associastaff/creaprodotto', 'LV4Controller@creaProdotto') -> name('creaProdotto')->middleware('can:isAdmin');
 
 //Rotta per cancellare prodotti
 Route::get('/admin/cancellaprodotto/{id}', 'LV4Controller@cancellaProdotto') -> name('cancellaProdotto')->middleware('can:isAdmin');
 
 //Rotte per modifica prodotti
-Route::get('/admin/modificaprodotto/{id_evento}', 'LV4Controller@showFormModificaProdotto') -> name('modificaProdotto')->middleware('can:isAdmin');
+Route::get('/admin/modificaprodotto/{id_prodotto}', 'LV4Controller@showFormModificaProdotto') -> name('modificaProdotto')->middleware('can:isAdmin');
 Route::post('/admin/modificaprodotto', 'LV4Controller@modificaProdotto') -> name('modProdotto')->middleware('can:isAdmin');
+
+Route::get('/admin/associastaff', 'LV4Controller@assStaff') -> name('assStaff') -> middleware('can:isAdmin');
 
 Route::get('/admin/cancellaprodotto/{id}', 'LV4Controller@cancellaProdotto') -> name('cancellaProdotto')->middleware('can:isAdmin');
 

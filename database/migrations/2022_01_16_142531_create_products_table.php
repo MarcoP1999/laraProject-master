@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->longText('descrizione')->nullable();
             $table->longText('modi_installazione')->nullable();
             $table->string('nome_e_codice')->nullable();
+            $table->unsignedBigInteger('id_utente');
+            $table->foreign('id_utente')->references('id')->on('users');
             //$table->timestamps();
         });
     }
