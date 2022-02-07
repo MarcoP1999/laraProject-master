@@ -25,10 +25,11 @@ Route::get('/faq', 'PublicController@showFAQ') -> name('faq');
 // Rotta per contatti
 Route::view('/contatti', 'contatti') -> name('contatti');
 
-Route::get('/staff/gestione3/{product_id}', 'Lv3Controller@showGestione3') -> name('gestione3')->middleware('can:isStaff');
 
 // Rotta area staff
 Route::get('/staff', 'LV3Controller@showAreaStaff') -> name('staff_area')->middleware('can:isStaff');
+
+// Rotta gestione malfunzionamenti e soluzioni staff
 Route::get('/staff/gestionemalf3/{product_id}', 'Lv3Controller@showGestione3') -> name('gestione3')->middleware('can:isStaff');
 Route::get('/staff/gestionemalf3/gestionesol3/{malfunction_id}', 'Lv3Controller@showGestSol3') -> name('gestSol3')->middleware('can:isStaff');
 
@@ -50,7 +51,7 @@ Route::get('/staff/gestionemalf3/gestionesol3/{id_soluzione}', 'LV3Controller@de
 
 // Rotta per scheda prodotto
 Route::get('/prodotto/{id_prodotto}', 'PublicController@productDetails') -> name('productDetails');
-
+// Rotta per scheda soluzioni
 Route::get('/soluzione/{id_prodotto}', 'PublicController@solutionDetails') -> name('solutionDetails');
 
 // Rotte per l'autenticazione
@@ -64,14 +65,10 @@ Route::post('logout', 'Auth\LoginController@logout')
 // Rotta per home lv.4
 Route::get('/admin', 'LV4Controller@showAreaAdmin') -> name('admin')->middleware('can:isAdmin');
 
-// Rotta crea prodotto
+// Rotte gestione prodotto
 Route::get('/admin/associastaff/creaprodotto/{id}', 'LV4Controller@showCreaProdotto') -> name('nuovoProdotto')->middleware('can:isAdmin');
 Route::post('/admin/associastaff/creaprodotto', 'LV4Controller@creaProdotto') -> name('creaProdotto')->middleware('can:isAdmin');
 
-//Rotta per cancellare prodotti
-Route::get('/admin/cancellaprodotto/{id}', 'LV4Controller@cancellaProdotto') -> name('cancellaProdotto')->middleware('can:isAdmin');
-
-//Rotte per modifica prodotti
 Route::get('/admin/modificaprodotto/{id_prodotto}', 'LV4Controller@showFormModificaProdotto') -> name('modificaProdotto')->middleware('can:isAdmin');
 Route::post('/admin/modificaprodotto', 'LV4Controller@modificaProdotto') -> name('modProdotto')->middleware('can:isAdmin');
 
@@ -79,6 +76,7 @@ Route::get('/admin/associastaff', 'LV4Controller@assStaff') -> name('assStaff') 
 
 Route::get('/admin/cancellaprodotto/{id}', 'LV4Controller@cancellaProdotto') -> name('cancellaProdotto')->middleware('can:isAdmin');
 
+//Rotte per gestione malfunzionamento e soluzioni admin
 Route::get('/admin/gestione_prod4', 'Lv4Controller@showGestioneProd4') -> name('gestione_prod4')->middleware('can:isAdmin');
 Route::get('/admin/gestione_prod4/gestione4/{product_id}', 'Lv4Controller@showGestione4') -> name('gestione4')->middleware('can:isAdmin');
 Route::get('/admin/gestione_prod4/gestione4/gestmalf4/{malfunction_id}', 'Lv4Controller@showGestSol4') -> name('gestSol4')->middleware('can:isAdmin');
@@ -99,6 +97,7 @@ Route::get('/admin/gestioneprodotti4/gestionemalf4/{id_malfunzionamento}', 'LV4C
 
 Route::get('/admin/gestioneprodotti4/gestionemalf4/gestionesol4/{id_soluzione}', 'LV4Controller@deleteSol4') -> name('deleteSol4') -> middleware('can:isAdmin');
 
+//Rotte per gestione utenti
 Route::get('/admin/tecnici', 'LV4Controller@showTecn') -> name('showTecn') -> middleware('can:isAdmin');
 
 Route::get('/admin/staff', 'LV4Controller@showStaff') -> name('showStaff') -> middleware('can:isAdmin');
@@ -118,6 +117,7 @@ Route::post('/admin/tecnici/addtecn', 'LV4Controller@addNewTecn') -> name('addNe
 Route::view('/admin/staff/addstaff', 'admin.aggiungi_staff') -> name('addStaff') -> middleware('can:isAdmin');
 Route::post('/admin/staff/addstaff', 'LV4Controller@addNewStaff') -> name('addNewStaff') -> middleware('can:isAdmin');
 
+//Rotte per gestione FAQ
 Route::get('/admin/faq', 'LV4Controller@showFaqAdmin') -> name('showFaqAdmin') -> middleware('can:isAdmin');
 
 Route::view('/admin/faq/aggiungi', 'admin.aggiungi_faq') -> name('addFaq') -> middleware('can:isAdmin');

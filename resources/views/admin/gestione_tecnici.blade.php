@@ -11,7 +11,7 @@
     <div id="container2">
         <!-- elenco tecnici -->
         <div id="contenuto_catalogo">
-            <div class="header_org">
+            <div class="header_staff">
                 @if($tecnici->total() != 1)
                     <h3>Lista tecnici ({{$tecnici->total()}} risultati)</h3>
                 @else

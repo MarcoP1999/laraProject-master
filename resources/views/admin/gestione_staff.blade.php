@@ -11,7 +11,7 @@
 
     <div id="container2">
     <div id="contenuto_catalogo">
-        <div class="header_org">
+        <div class="header_staff">
             @if($staff->total() != 1)
             <h3>Lista staff ({{$staff->total()}} risultati)</h3>
             @else

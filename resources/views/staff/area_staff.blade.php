@@ -10,7 +10,7 @@
 @section('content')
     <div id="container2">
         <div id="contenuto_catalogo">
-            <div class="header_org">
+            <div class="header_staff">
                 @if($prodotti->total() != 1)
                     <h3>Lista prodotti ({{$prodotti->total()}} risultati)</h3>
                 @else

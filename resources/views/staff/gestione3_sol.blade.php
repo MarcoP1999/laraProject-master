@@ -13,7 +13,7 @@
             </aside>
         </div>
         <div class="page" style="height: 500px; overflow: scroll">
-            <div class="header_org">
+            <div class="header_staff">
                 <h3>Soluzioni</h3>
                 <div class="bottone_admin">
                     <div class="bottone_prodotto">

@@ -15,4 +15,14 @@ class StaffModel extends Model
             ->paginate(5);
         return $prodotti;
     }
+
+    public function checkStaff($id_prodotto,$id_utente){
+        $staffname = DB::table('users')
+            ->select('username')
+            ->where('id', '=', $id_utente)
+            ->get();
+        $prodotti =Prodotti::where('product_id', $id_prodotto)
+            ->get();
+        return $staffname[0]->nome_org==$prodotti[0]->org_name;
+    }
 }

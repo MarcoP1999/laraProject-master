@@ -35,12 +35,14 @@
             </div>
         </div>
         @auth
-            <div class="malfunzionamenti_e_soluzioni" style="height: 403px; overflow: scroll">
+            <div id="info" style="padding-left:50px">
+            <div class="malfunzionamenti_e_soluzioni" style="height: 400px; overflow: scroll">
                     <h3>Malfunzionamenti</h3>
                         @foreach($malfunzionamenti as $malfunzionamento)
                     <br><h5 style="padding-left: 10px"><b>{{ $malfunzionamento->descrizione_malfunzionamento }}</b></h5>
                     <a href=" {{ route('solutionDetails', [$malfunzionamento->malfunction_id]) }}"><h6 style="padding-left: 10px">Soluzioni</h6></a>
-                        @endforeach
+                         @endforeach
+            </div>
             </div>
         @endauth
     </div>

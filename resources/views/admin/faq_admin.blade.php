@@ -29,7 +29,7 @@
             </aside>
         </div>
       <div class="page" style="height: 500px; overflow: scroll">
-            <div class="header_org">
+            <div class="header_staff">
                 <h3>Lista FAQ</h3>
                 <div class="bottone_admin">
                     <div class="bottone_prodotto">

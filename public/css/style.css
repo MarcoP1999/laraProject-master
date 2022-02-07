@@ -76,7 +76,7 @@ hr {color:#d8e8f5}
 
 .btn_loginn {
     width: 100px;
-    background-color: #eb8215;
+    background-color: #122e84;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -125,7 +125,7 @@ p, hr, h1, h2, h3, h5, h6, ol, ul{margin-bottom: 20px;}
 header 	{width: 920px;float:left;padding:20px;background:#fff;}
 
 /*nav*/
-nav		{width: 100%;float:left;background: #197dd1;}
+nav		{width: 100%;float:left;background: #76a017;}
 nav ul 		{margin: 0px;float:left;width:100%; list-style: none;overflow:hidden;padding:10px;text-align:center;}
 nav ul li 	{float: left;margin: 0px;position: relative;}
 nav a 		{color: #fff; display: block;font-size:0.9em;padding: 14px 20px;text-transform:uppercase;}
@@ -184,14 +184,14 @@ ul.breadcrumb li a:hover {
 }
 .header_css{
 	height: 75px;
-	background-color: rgb(36, 88, 176);
+	background-color: rgb(69, 116, 13);
 }
 .logo{
 	float: left;
 	padding: 5px;
 }
 .lgn_btn {
-  background-color: #eb8215;
+  background-color: #122e84;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -214,7 +214,7 @@ aside		{width: 270px;float:right;}
 #sitemap    {padding-left:10px;}
 
 footer {width:920px;float:left;padding:20px;background:#676767;color:#fff;}
-footer a 	{font:14px;color:#fff; line-height:30px;}
+footer a 	{font-size:14px;color:#fff; line-height:30px;}
 footer a:hover 	{color:#d8e8f5;}
 footer p 	{padding-left:10px;}
 
@@ -260,7 +260,7 @@ fieldset{margin-bottom: 10px;}
   text-align: center;
     width: 100px;
     padding: 5px;
-    background-color: #eb8215;
+    background-color: #122e84;
     color: white;
     margin: 8px 0;
     border: none;
@@ -290,21 +290,22 @@ fieldset{margin-bottom: 10px;}
 /* CONTATTI */
 .mappa {float: right; margin: 10px 0px;}
 .presentazione {float: left; width: 600px;}
-.presentazione h1 {color: #225bda;}
-.presentazione h3 {color: #225bda;}
+.presentazione h1 {color: #216f2c;}
+.presentazione h3 {color: #13782b;}
 
 /*SCHEDA PRODOTTO*/
-.titolo_scheda h1 {color: #225bda;}
+.titolo_scheda h1 {color: #217618;}
 
 .bottone_prodotto{float: left; margin-left: 50px;}
-.bottone_prodotto .lgn_btn {background-color: #225bda; width: 300px; margin-top: 10px;}
-.bottone_prodotto .lgn_btn:hover {background: rgb(65, 159, 246)}
+.bottone_prodotto .lgn_btn {background-color: #238b1c; width: 300px; margin-top: 10px;}
+.bottone_prodotto .lgn_btn:hover {background: rgb(132, 246, 107)
+}
 
 .info_acquista {width: 100%;}
 
 .info_prodotto{
   padding: 10px 0px;
-  background-color: #eb8215;
+  background-color: #122e84;
   float: left;
   height: auto;
   width: 600px;
@@ -343,7 +344,7 @@ fieldset{margin-bottom: 10px;}
     width: 100%;
     margin-top: 10px;
 }
-.dati_personali h3 {color: #225bda;}
+.dati_personali h3 {color: #198e1f;}
 
 .btn_dati{
     float: right;
@@ -367,7 +368,7 @@ fieldset{margin-bottom: 10px;}
 }
 
 #pagination .arrow:hover {
-  background-color: #225bda;
+  background-color: #1e8434;
   color: white;
 }
 
@@ -375,7 +376,7 @@ fieldset{margin-bottom: 10px;}
   border-radius: 0%;
   padding: 10px;
   width: 20px;
-  background-color: #eb8215;
+  background-color: #122e84;
   color: white;
 }
 
@@ -395,8 +396,8 @@ margin-right: 7px;
 color: black;
 content: "\00a0 | \00a0";
 }
-.eventi_organizzati #elemento_lista {margin-left: -10px;}
-.eventi_organizzati .riquadro_concerto .options {margin-top: 40px;}
+.prodotti_organizzati #elemento_lista {margin-left: -10px;}
+.prodotti_organizzati .riquadro_prodotto .options {margin-top: 40px;}
 /*LOGIN E REGISTRAZIONE*/
 .card-header{margin: 25px 0px 0px 40px;}
 .card-body{margin: 25px 0px 0px 25px;}
@@ -404,7 +405,7 @@ content: "\00a0 | \00a0";
 .nav-link{margin-left: 20px;}
 .col-md-6{margin-top: 10px;}
 .btn {
-  background-color: #eb8215;
+  background-color: #122e84;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -414,7 +415,7 @@ content: "\00a0 | \00a0";
 
 /*ADMIN*/
 .bottone_admin .bottone_prodotto {margin-left: 0px; margin-top: -20px; float: right;}
-.header_org h3 {color: #225bda; height: 0px; margin-bottom: 0px; padding-top: 20px;}
+.header_staff h3 {color: #225bda; height: 0px; margin-bottom: 0px; padding-top: 20px;}
 
 
 .nome_utenti h5{margin: 10px 0px 0px 20px;}
@@ -433,7 +434,7 @@ content: "\00a0 | \00a0";
 }
 
 .src_btn{
-  background-color: #eb8215;
+  background-color: #122e84;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -443,14 +444,14 @@ content: "\00a0 | \00a0";
 .form_dati {
   width: 100%;
   float:left;
-  background: #87bdfb;
+  background: #83d549;
   padding: 20px;
 }
-.form_dati h3 {color: #225bda;}
+.form_dati h3 {color: #1c1c02;}
 .form_dati h6 {margin-bottom: 1px;}
 
 .menu_admin .menu a {
-    background-color: #eb8215;
+    background-color: #122e84;
     border-radius: 4px;
     width: 170px;
     color: white;
@@ -493,7 +494,7 @@ content: "\00a0 | \00a0";
 header 		{width:1130px;float:left;padding:20px;}
 nav		{width:100%;float:left;display:block;}
 aside		{width:260px;float:right;}
-.catalog {float:left; background-color:rgba(32, 144, 247, 0.59);padding: 10px;}
+.catalog {float:left; background-color: rgba(65, 125, 33, 0.59);padding: 10px;}
 footer		{width:1130px;float:left;padding:20px;}
 #wrapper 	{width:1170px;margin:0 auto;}
 #container	{width:1130px;float:left; margin: 10px 0px 0px 20px}
