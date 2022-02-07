@@ -26,7 +26,9 @@
                 @foreach($prodotti as $prodotto)
                     <li id="elemento_lista">
                         <div class="riquadro_concerto">
-                            <div class=""> <img src="{{ asset('images/' . $prodotto->image_catalogo) }}" alt="" class="immagine_prodotto"> </div>
+                            <div class="">
+                                <img src="{{ asset('images/' . $prodotto->image_catalogo) }}" alt="" class="immagine_prodotto" style="height: 100px; width: 100px; ">
+                            </div>
                             <div class="testo_concerto">
                                 <h4>{{$prodotto->nome_e_codice}}</h4>
                                 <!-- Titolo, Data, Luogo, Prezzo-->
