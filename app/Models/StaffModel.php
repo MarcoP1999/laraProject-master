@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Support\Facades\DB;
 use App\Models\Resources\Utente;
+use App\Models\Resources\Prodotto;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,11 +19,11 @@ class StaffModel extends Model
 
     public function checkStaff($id_prodotto,$id_utente){
         $staffname = DB::table('users')
-            ->select('username')
+            ->select('id')
             ->where('id', '=', $id_utente)
             ->get();
-        $prodotti =Prodotti::where('product_id', $id_prodotto)
+        $prodotti =Prodotto::where('product_id', $id_prodotto)
             ->get();
-        return $staffname[0]->nome_org==$prodotti[0]->org_name;
+        return $staffname[0]->id==$prodotti[0]->id_utente;
     }
 }
