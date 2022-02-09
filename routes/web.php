@@ -45,9 +45,9 @@ Route::post('/staff/gestionemalf3/mod_malf3/{id_malfunzionamento}', 'LV3Controll
 Route::get('/staff/gestionemalf3/gestionesol3/mod_sol3/{id_soluzione}', 'LV3Controller@showSolModify3') -> name('modifySol3') -> middleware('can:isStaff');
 Route::post('/staff/gestionemalf3/gestionesol3/mod_sol3/{id_soluzione}', 'LV3Controller@modifyDataSol3') -> name('modifyDataSol3') -> middleware('can:isStaff');
 
-Route::get('/staff/gestionemalf3/{id_malfunzionamento}', 'LV3Controller@deleteMalf3') -> name('deleteMalf3') -> middleware('can:isStaff');
+Route::get('/staff/gestione_malf3/{id_malfunzionamento}', 'LV3Controller@deleteMalf3') -> name('deleteMalf3') -> middleware('can:isStaff');
 
-Route::get('/staff/gestionemalf3/gestionesol3/{id_soluzione}', 'LV3Controller@deleteSol3') -> name('deleteSol3') -> middleware('can:isStaff');
+Route::get('/staff/gestione_malf3/gestione_sol3/{id_soluzione}', 'LV3Controller@deleteSol3') -> name('deleteSol3') -> middleware('can:isStaff');
 
 // Rotta per scheda prodotto
 Route::get('/prodotto/{id_prodotto}', 'PublicController@productDetails') -> name('productDetails');

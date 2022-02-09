@@ -39,9 +39,8 @@ class LV3Controller extends Controller
   }
 
     public function showGestione3($id_prodotto) {
-        if(!$this->_StaffModel->checkStaff($id_prodotto,Auth::id())) abort(403, "Non puoi accedere a queste informazioni");
-        $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
-
+          if (!$this->_StaffModel->checkStaff($id_prodotto, Auth::id())) abort(403, "Non puoi accedere a queste informazioni");
+          $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
 
         return view('staff.gestione3_malf')
             ->with('id_prodotto', $id_prodotto)
@@ -125,6 +124,7 @@ class LV3Controller extends Controller
     public function deleteMalf3 ($id_malfunzionamento){
         $id_prodotto=$this->_PublicModel->deleteMalf( $id_malfunzionamento);
         $malfunzionamenti = $this->_PublicModel->getMalfunctionDetails($id_prodotto);
+
         return view('staff.gestione3_malf')
             ->with('id_prodotto', $id_prodotto)
             ->with('malfunzionamenti', $malfunzionamenti);

@@ -444,7 +444,7 @@ content: "\00a0 | \00a0";
 .form_dati {
   width: 100%;
   float:left;
-  background: #83d549;
+  background: rgba(65, 125, 33, 0.59);
   padding: 20px;
 }
 .form_dati h3 {color: #1c1c02;}

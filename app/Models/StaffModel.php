@@ -13,7 +13,7 @@ class StaffModel extends Model
     public function getProducts() {
         $prodotti = DB::table('products')
             ->where('id_utente',Auth::id())
-            ->paginate(5);
+            ->paginate(4);
         return $prodotti;
     }
 
@@ -24,6 +24,8 @@ class StaffModel extends Model
             ->get();
         $prodotti =Prodotto::where('product_id', $id_prodotto)
             ->get();
+        if (empty($prodotti)) return false;
+            else
         return $staffname[0]->id==$prodotti[0]->id_utente;
     }
 }

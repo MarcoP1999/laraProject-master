@@ -4,6 +4,7 @@
 
 @section('breadcrumb')
     <li><a href="{{ route('showCatalog') }}">Catalogo</a></li>
+    <li><a href="{{ route('productDetails', [$prodotto[0]->product_id]) }}">Prodotto e Malfunzionamento</a></li>
 
 @endsection
 

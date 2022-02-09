@@ -4,6 +4,7 @@
 
 @section('breadcrumb')
     <li><a href="{{ route('admin') }}">Admin</a></li>
+    <li><a href="{{ route('assStaff') }}">Associa</a></li>
 @endsection
 
 @section('content')

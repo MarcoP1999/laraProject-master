@@ -17,7 +17,7 @@ class PublicModel
 {
     public function getProducts() {
         $prodotti = DB::table('products')
-            ->paginate(5);
+            ->paginate(4);
         return $prodotti;
     }
 
@@ -58,7 +58,7 @@ class PublicModel
 
 
 
-        return $prodotti->paginate(1);
+        return $prodotti->paginate(4);
     }
 
     public function addMalf( $request) {
@@ -101,7 +101,7 @@ class PublicModel
         return $solution->id_malfunzionamento;
     }
 
-    public function deleteMalf($id_malfunzionamento) {
+   public function deleteMalf($id_malfunzionamento) {
         $malfunction = Malfunzionamento::find($id_malfunzionamento);
         $id_prodotto=$malfunction->id_prodotto;
         $malfunction->delete();

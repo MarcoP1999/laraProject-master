@@ -3,6 +3,7 @@
 @section('title', 'Modifica Malfunzionamento Staff')
 
 @section('breadcrumb')
+    <li><a href="{{ route('staff_area') }}">Area staff</a></li>
     <li><a href="{{ route('modifyMalf3', [$dati_malf->malfunction_id]) }}">Modifica Malfunzionamento</a></li>
 @endsection
 

@@ -4,8 +4,8 @@
 
 @section('breadcrumb')
     <li><a href="{{ route('admin') }}">Admin</a></li>
-    <li><a href="{{ route('showStaff') }}">FAQ</a></li>
-    <li><a href="{{ route('addStaff') }}">Aggiungi FAQ</a></li>
+    <li><a href="{{ route('showFaqAdmin') }}">FAQ</a></li>
+    <li><a href="{{ route('addFaq') }}">Aggiungi FAQ</a></li>
 @endsection
 
 @section('content')

@@ -3,8 +3,7 @@
 @section('title', 'Modifica Soluzione Staff')
 
 @section('breadcrumb')
-    <li><a href="{{ route('admin') }}">Admin</a></li>
-    <li><a href="{{ route('gestione_prod3') }}">Malfunzionamenti</a></li>
+    <li><a href="{{ route('staff_area') }}">Area staff</a></li>
 @endsection
 
 @section('content')

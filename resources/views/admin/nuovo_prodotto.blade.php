@@ -4,6 +4,7 @@
 
 @section('breadcrumb')
     <li><a href="{{ route('admin') }}">Area organizzatori</a></li>
+    <li><a href="{{ route('assStaff') }}">Associa</a></li>
     <li><a href="{{ route('nuovoProdotto', [$id]) }}">Nuovo prodotto</a></li>
 @endsection
 

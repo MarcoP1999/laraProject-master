@@ -3,7 +3,7 @@
 @section('title', 'Aggiungi Malfunzionamento Staff')
 
 @section('breadcrumb')
-
+    <li><a href="{{ route('staff_area') }}">Area staff</a></li>
 @endsection
 
 @section('content')

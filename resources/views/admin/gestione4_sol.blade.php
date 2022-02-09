@@ -4,6 +4,7 @@
 
 @section('breadcrumb')
     <li><a href="{{ route('admin') }}">Admin</a></li>
+    <li><a href="{{ route('gestione_prod4') }}">Malfunzionamenti</a></li>
 @endsection
 
 @section('content')
