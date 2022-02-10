@@ -57,7 +57,7 @@ class LV4Controller extends Controller
     public function creaProdotto(NewProductRequest $request){
 
         $this->_AdminModel->setNewProductData($request);
-        return redirect()->route('admin');
+        return response()->json(['redirect' => route('admin')]);
     }
 
     public function cancellaProdotto($id){

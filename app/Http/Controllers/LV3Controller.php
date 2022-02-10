@@ -48,6 +48,7 @@ class LV3Controller extends Controller
     }
 
     public function showGestSol3($id_malfunzionamento) {
+        if (!$this->_StaffModel->checkStaffDet($id_malfunzionamento, Auth::id())) abort(403, "Non puoi accedere a queste informazioni");
 
         $soluzioni = $this->_PublicModel->getSolutionsDetails($id_malfunzionamento);
 

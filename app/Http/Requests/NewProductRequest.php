@@ -4,6 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+// Aggiunti per response JSON
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
+use Symfony\Component\HttpFoundation\Response;
+
 class NewProductRequest extends FormRequest
 {
     /**
@@ -30,5 +35,10 @@ class NewProductRequest extends FormRequest
             'modi_installazione' => ['required','max:3000','string'],
             'image_catalogo' => ['image']
         ];
+    }
+    //la risposta in caso di errore di validazione è restituita come json come errore 422
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
     }
 }
